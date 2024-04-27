@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#bodyIndex {
+  background: #000;
+  font-family: "dosFont";
+  font-size: 19px;
+  color: #888;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  transform: scale(0.6) translateY(-25%);
+}
+
+#styleBody {
+  background: #000;
+  font-family: "dosFont";
+  font-size: 19px;
+  color: #888;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  transform: scale(0.6) translateY(-25%);
+}
+
+.last {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@font-face {
+  font-family: dosFont;
+  src: url(../fonts/PerfectDOS-VGA-437-Win.ttf);
+}/*# sourceMappingURL=styles.css.map */
