@@ -1,10 +1,35 @@
 document.addEventListener("DOMContentLoaded", function() {
     const consoleContent = document.getElementById("consoleContent");
     const inputLine = document.getElementById("inputLine");
-    const cursor = document.getElementById("cursor");
 
     let commandHistory = [];
     let historyIndex = -1;
+
+    // Estructura de carpetas
+    let fileSystem = {
+        'C:': {
+            'juegos': {
+                'mario': {},
+                'zelda': {}
+            },
+            'imágenes': {
+                'acdc': {},
+                'metallica': {}
+            }
+        }
+    };
+
+    document.addEventListener("click", function(event) {
+        // Verificar si el clic ocurrió fuera del área del inputLine
+        if (event.target !== inputLine) {
+            // En caso afirmativo, enfocar el inputLine
+            inputLine.focus();
+        }
+    });
+
+    // Directorio actual y ruta
+    let currentDirectory = fileSystem['C:'];
+    let currentPath = ['C:'];
 
     inputLine.focus();
 
@@ -24,32 +49,36 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function handleCommand(command) {
-        consoleContent.innerHTML += `<div class="command-response ${getCommandClass(command)}">C:\\>${command}</div>`;
+        let currentPathDisplay = currentPath.join('\\');
+        if (!currentPathDisplay.endsWith('\\')) {
+            currentPathDisplay += '\\';
+        }
+        consoleContent.innerHTML += `<div class="command-response ${getCommandClass(command)}">${currentPathDisplay}>${command}</div>`;
         commandHistory.unshift(command);
         consoleContent.scrollTop = consoleContent.scrollHeight;
-
+        
         // Implementación de las funciones de la consola
         switch (command.toLowerCase()) {
             case "time":
                 consoleContent.innerHTML += `<div class="command-response timeConfig">Current time is: ${getCurrentTime()}</div>`;
                 break;
-                case "help":
-                    consoleContent.innerHTML += 
-                    `Available commands\n`;
-                    consoleContent.innerHTML += 
-                    `   [time]     Displays the current time\n`;
-                    consoleContent.innerHTML += 
-                    `   [help]     Shows the list of available commands\n`;
-                    consoleContent.innerHTML += 
-                    `   [dir]      Lists directory contents\n`;
-                    consoleContent.innerHTML += 
-                    `   [cls]      Clears the console screen\n`;
-                break;
-            case "dir":
-                consoleContent.innerHTML += `<div class="command-response dirConfig">Listing directory contents...</div>`;
+            case "help":
+                consoleContent.innerHTML += 
+                `Available commands\n`;
+                consoleContent.innerHTML += 
+                `   [time]        Displays the current time\n`;
+                consoleContent.innerHTML += 
+                `   [help]        Shows the list of available commands\n`;
+                consoleContent.innerHTML += 
+                `   [cls]         Clears the console screen\n`;
+                consoleContent.innerHTML += 
+                `   [start.exe]   Run HeroSoft Operative System\n`;
                 break;
             case "cls":
                 consoleContent.innerHTML = "";
+                break;
+            case "start.exe":
+                startHeroSoftSystem();
                 break;
             default:
                 if (command !== "") {
@@ -57,6 +86,37 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
                 break;
         }
+    }
+    
+    function startHeroSoftSystem() {
+        consoleContent.innerHTML += `<div class="command-response">Starting HeroSoft System</div>`;
+        // Ocultar el elemento inputLine y inputPrefix después de enviar el comando "start.exe"
+        inputLine.style.display = "none";
+        inputPrefix.style.display = "none";
+        setTimeout(function() {
+            addDotsAndSound();
+        }, 500);
+    }
+
+    function addDotsAndSound() {
+        let dots = "";
+        // Comenzar a agregar puntos inmediatamente
+        let timer = setInterval(function() {
+            dots += ".";
+            consoleContent.lastElementChild.innerHTML = `Starting HeroSoft System${dots}`;
+            if (dots.length === 3) {
+                clearInterval(timer);
+                const audio = new Audio('./../data/pip.mp3');
+                // Reproducir el sonido después de un segundo desde el tercer punto
+                setTimeout(function() {
+                    audio.play();
+                    // Redirigir a la página después de que termine el sonido
+                    setTimeout(function() {
+                        window.location.href = "portfolioSystem.html";
+                    }, 1000);
+                }, 1000);
+            }
+        }, 1000);
     }
 
     function navigateCommandHistory(direction) {
@@ -91,10 +151,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 return "timeConfig";
             case "help":
                 return "helpConfig";
-            case "dir":
-                return "dirConfig";
             case "cls":
                 return "clsConfig";
+            case "start.exe":
+                return "startConfig";
             default:
                 return "unknownConfig";
         }
