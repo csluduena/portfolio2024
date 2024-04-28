@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function() {
             consoleContent.lastElementChild.innerHTML = `Starting HeroSoft System${dots}`;
             if (dots.length === 3) {
                 clearInterval(timer);
-                const audio = new Audio('../data/pip.mp3');
+                const audio = new Audio('./data/pip.mp3');
                 // Reproducir el sonido después de un segundo desde el tercer punto
                 setTimeout(function() {
                     audio.play();

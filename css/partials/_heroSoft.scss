@@ -1,3 +1,35 @@
 .BackColorSO {
     background-color: rgb(20, 48, 52);
 }
+
+.navBarMenu {
+    background-color: rgb(10, 113, 181);
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+    font-family: "dosFont";
+}
+
+.hsMenu {
+    border: 2px solid black;
+    font-family: "dosFont";
+    font-size: 20px;
+    padding: 3px;
+}
+
+.heroSoftTitle {
+    font-family: "dosFont";
+    display:flex;
+}
+
+.navBarSecondary {
+    border: 2px solid black;
+    font-family: "dosFont";
+    height: 20px;
+}
+
+.navBarSecondary {
+    border: 2px solid black;
+    font-family: "dosFont";
+    height: 33px;
+}
