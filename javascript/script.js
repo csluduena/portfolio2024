@@ -45,7 +45,7 @@ const EVENTS = [
 
 ];
 
-const keySound = new Audio("./data/key.mp3");
+const keySound = new Audio("../data/key.mp3");
 
 const type = (paragraph, text) => {
     const duration = Number(paragraph.dataset.duration) || 5000;
@@ -66,7 +66,7 @@ const typewriter = (paragraph) => {
     setTimeout(() => type(paragraph, text), delay);
 }
 
-const sound = new Audio("./data/boot.mp3");
+const sound = new Audio("../data/boot.mp3");
 
 const date = () => {
     const date = new Date();
@@ -84,12 +84,12 @@ class AwardBoot extends HTMLElement {
         super();
         this.attachShadow({ mode: "open" });
         // Agregar el evento para escuchar la tecla F2
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "F2") {
-            this.enterDOSConsole();
-        }
-    });
-}
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "F2") {
+                this.enterDOSConsole();
+            }
+        });
+    }
 
     static get styles() {
         return `
@@ -384,8 +384,8 @@ class AwardBoot extends HTMLElement {
     enterDOSConsole() {
         const screen = this.shadowRoot.querySelector(".screen");
         window.location.href = "../pages/ms-dos.html";
-        $(document).ready(function() {
-            $('#terminal').terminal(function(command) {
+        $(document).ready(function () {
+            $('#terminal').terminal(function (command) {
                 // Aquí irá la lógica para procesar los comandos ingresados por el usuario
             }, {
                 greetings: 'HeroSoft(R) CsLuduena Portfolio\n(C)Copyright HeroSoft Corp 1986-2024\n',
@@ -397,13 +397,3 @@ class AwardBoot extends HTMLElement {
 
 customElements.define("award-boot", AwardBoot);
 
-//todo terminal on.
-
-// $(document).ready(function() {
-//     $('#terminal').terminal(function(command) {
-//         // Aquí irá la lógica para procesar los comandos ingresados por el usuario
-//     }, {
-//         greetings: 'HeroSoft(R) CsLuduena Portfolio\n(C)Copyright HeroSoft Corp 1986-2024\n',
-//         prompt: 'C:\\>'
-//     });
-// });
