@@ -106,13 +106,13 @@ document.addEventListener("DOMContentLoaded", function() {
             consoleContent.lastElementChild.innerHTML = `Starting HeroSoft System${dots}`;
             if (dots.length === 3) {
                 clearInterval(timer);
-                const audio = new Audio('./../data/pip.mp3');
+                const audio = new Audio('../data/pip.mp3');
                 // Reproducir el sonido después de un segundo desde el tercer punto
                 setTimeout(function() {
                     audio.play();
                     // Redirigir a la página después de que termine el sonido
                     setTimeout(function() {
-                        window.location.href = "portfolioSystem.html";
+                        window.location.href = "./loading.html";
                     }, 1000);
                 }, 1000);
             }

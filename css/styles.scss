@@ -1,11 +1,18 @@
 @import "./partials/variables";
 @import "./partials/reset";
 @import "./partials/main";
+@import "./partials/heroSoft";
 @import "./partials/console";
+@import "./partials/loadingImg";
 @import "./partials/header";
 @import "./partials/footer";
 
 @font-face {
     font-family: dosFont;
     src: url(../fonts/PerfectDOS-VGA-437-Win.ttf);
+}
+
+@font-face {
+    font-family: heroSoft;
+    src: url(../fonts/Px437_ACM_VGA_8x8.ttf);
 }

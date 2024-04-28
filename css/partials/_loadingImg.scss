@@ -1,0 +1,89 @@
+//! Loading
+
+// body {
+//     background-color: rgb(20, 48, 52);
+// }
+
+.backLoadingColor {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* Agrega el color de fondo negro */
+    z-index: -1; /* Asegura que esté detrás de todo */
+}
+
+@keyframes fadeOutBackground {
+    0% {
+        opacity: 1; /* Comienza con opacidad mínima */
+    }
+    99.9% {
+        opacity: 1; /* Termina con opacidad máxima */
+    }
+    100% {
+        opacity: 1; /* Termina con opacidad máxima */
+        display: none; /* Oculta completamente el elemento */
+    }
+}
+
+.heroSoftIntro {
+    font-family: "heroSoft";
+    font-size: 160px;
+    color: gray;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    z-index: 1; /* Asegura que esté encima del fondo negro */
+    animation: rotateHue 3s linear forwards, hideBackground 3s linear forwards; /* Aplica la animación de rotación de color y ocultamiento */
+}
+
+.secTxt {
+    font-family: "heroSoft";
+    font-size: 40px;
+    color: gray;
+    position: fixed;
+    top: calc(50% + 100px); /* Ajusta la posición vertical */
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    animation: hideBackground 3s linear forwards;
+}
+
+@keyframes rotateHue {
+    0% {
+        filter: hue-rotate(0deg); /* Empieza desde 0 grados */
+    }
+    100% {
+        filter: hue-rotate(360deg); /* Termina en 360 grados */
+    }
+}
+
+@keyframes hideElements {
+    0% {
+        opacity: 1; /* Inicia con opacidad completa */
+    }
+    99.9% {
+        opacity: 1; /* Mantiene la opacidad mientras se rota */
+    }
+    100% {
+        opacity: 1; /* Oculta el elemento al final de la animación */
+        display: none; /* Oculta completamente el elemento */
+    }
+}
+
+@keyframes hideBackground {
+    0% {
+        opacity: 1; /* Comienza con opacidad máxima */
+    }
+    100% {
+        opacity: 1; /* Termina con opacidad mínima */
+        display: none; /* Oculta completamente el elemento */
+    }
+}

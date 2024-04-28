@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading System</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+
+    <header>
+        <!--Header Area-->
+    </header>
+
+    <main class="backLoadingColor">
+        <!--Main Area-->
+        <div class="heroSoftIntro hideAll">
+            <span style='color:green;'>H</span>ero<span style='color:red;'>S</span>oft<span
+                style='color:rgb(92, 92, 92); font-size: 25px; text-align: right end ;'>®</span>
+        </div>
+        <div class="secTxt hideAll">
+            Portfolio v1.1
+        </div>
+    </main>
+
+    <footer>
+        <!--Footer Area-->
+    </footer>
+
+    <!--Script-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const heroSoftIntro = document.querySelector(".heroSoftIntro");
+            heroSoftIntro.addEventListener("animationend", function (event) {
+                if (event.animationName === "rotateHue") {
+                    window.location.href = "./portfolioSystem.html";
+                }
+            });
+        });
+    </script>
+        <!-- <script src=" ../javascript/script.js"></script> -->
+</body>
+
+</html>

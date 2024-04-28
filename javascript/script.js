@@ -383,7 +383,7 @@ class AwardBoot extends HTMLElement {
 
     enterDOSConsole() {
         const screen = this.shadowRoot.querySelector(".screen");
-        window.location.href = "../pages/ms-dos.html";
+        window.location.href = "./ms-dos.html";
         $(document).ready(function () {
             $('#terminal').terminal(function (command) {
                 // Aquí irá la lógica para procesar los comandos ingresados por el usuario
