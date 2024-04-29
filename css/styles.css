@@ -62,6 +62,66 @@
   margin-left: 5px;
 }
 
+.hsMenu {
+  position: relative;
+}
+
+.hsMenu > hr {
+  position: absolute;
+  bottom: 3px;
+  left: 4.7px;
+  width: 19%;
+  border: 0;
+  height: 5px;
+  background-color: black;
+  /* margin: 0px; */
+  /* padding: 0; */
+}
+
+.dflex {
+  display: flex;
+}
+
+.hrCfgS, .hrCfgV, .hrCfgE {
+  position: relative;
+}
+
+.hrCfgS > hr {
+  position: absolute;
+  bottom: 3px;
+  left: -1.3px;
+  width: 18%;
+  border: 0;
+  height: 3px;
+  background-color: black;
+  /* margin: 0px; */
+  /* padding: 0; */
+}
+
+.hrCfgV > hr {
+  position: absolute;
+  bottom: 3px;
+  left: -1.3px;
+  width: 24%;
+  border: 0;
+  height: 3px;
+  background-color: black;
+  /* margin: 0px; */
+  /* padding: 0; */
+}
+
+.hrCfgE > hr {
+  position: absolute;
+  bottom: 3px;
+  left: -0.3px;
+  width: 13.8%;
+  border: 0;
+  height: 3px;
+  background-color: black;
+  /* margin: 0px; */
+  /* padding: 0; */
+}
+
 .heroSoftTitle {
   font-family: "dosFont";
   display: flex;
@@ -71,25 +131,11 @@
 }
 
 .navBarSecondary {
-  background-color: rgb(182, 205, 50);
+  background-color: rgb(50, 205, 161);
   border: 3px solid black; /* Borde de 3px sólido y negro en la parte superior e inferior */
   border-width: 3px 0 0; /* Grosor de 3px arriba. Abajo 0 y en los lados izquierdo y derecho */
   font-family: "dosFont";
   height: 33px;
-}
-
-.navBarUnity {
-  background-color: rgb(252, 252, 252);
-  border: 3px solid black; /* Borde de 3px sólido y negro en la parte superior e inferior */
-  border-width: 3px 0 3px; /* Grosor de 3px arriba. Abajo 0 y en los lados izquierdo y derecho */
-  font-family: "dosFont";
-  height: 29px;
-}
-
-.underline {
-  text-decoration: underline;
-  text-decoration-color: rgb(0, 0, 0); /* Color del subrayado */
-  text-decoration-thickness: 3px; /* Grosor del subrayado */
 }
 
 .menuSection1 {
@@ -117,6 +163,62 @@
 .cfgTxt {
   font-family: "dosFont";
   font-size: 30px;
+}
+
+.navBarUnity {
+  background-color: rgb(0, 0, 0);
+  border: 3px solid black;
+  color: white;
+  border-width: 3px 0 2px;
+  font-family: "dosFont";
+  /* height: 29px; */
+  padding-top: 3px;
+  text-align: center;
+  padding-bottom: 0px;
+}
+
+.cfgSubTxt {
+  font-family: "dosFont";
+  font-size: 30px;
+  /* padding-top: 12px; */
+}
+
+.optionsSystem {
+  background-color: white; /* Fondo blanco */
+  text-align: left; /* Texto alineado a la izquierda */
+  padding: 5px;
+  font-family: "dosFont"; /* Fuente dosFont */
+  font-size: 40px; /* Tamaño de fuente 30px */
+}
+
+.optionsSystem:hover:not(.focused),
+.optionsSystem:focus:not(.focused),
+.optionsSystem:focus-visible {
+  background-color: black; /* Cambio de color de fondo en hover y foco */
+  color: white; /* Cambio de color de texto en hover y foco */
+}
+
+.optionsSystem.focused {
+  background-color: rgb(0, 0, 0); /* Fondo blanco cuando el elemento tiene foco */
+  color: rgb(255, 255, 255); /* Texto negro cuando el elemento tiene foco */
+}
+
+.hoverMS123:hover {
+  background-color: rgb(10, 62, 30);
+}
+
+/* Desactivar el cursor parpadeante en los elementos hsMenu, menuSection1, menuSection2, menuSection3 y grid-item */
+.hsMenu, .menuSection1, .menuSection2, .menuSection3, .optionsSystem {
+  caret-color: transparent; /* Hacer transparente el cursor parpadeante */
+}
+
+.tableCfg {
+  border: 3px solid rgba(0, 0, 0, 0.329);
+  border-collapse: collapse;
+}
+
+.tableCfg td {
+  border: 1px solid rgba(0, 0, 0, 0.227);
 }
 
 #consoleBody {
