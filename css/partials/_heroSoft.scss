@@ -6,30 +6,77 @@
     background-color: rgb(10, 113, 181);
     display: flex;
     justify-content: space-between;
-    border: 2px solid black;
+    border: 3px solid black; /* Borde de 3px sólido y negro en la parte superior e inferior */
+    border-width: 3px 0 0; /* Grosor de 3px arriba. Abajo 0 y en los lados izquierdo y derecho */
     font-family: "dosFont";
 }
 
 .hsMenu {
+    background-color: yellowgreen;
     border: 2px solid black;
     font-family: "dosFont";
-    font-size: 20px;
-    padding: 3px;
+    font-size: 37px;
+    margin-top: 6px;
+    margin-bottom: 7px;
+    padding-left: 5px;
+    padding-bottom: 0px;
+    padding-top: 3px;
+    margin-left: 5px;
 }
 
 .heroSoftTitle {
     font-family: "dosFont";
-    display:flex;
+    display: flex;
+    font-size: 25px;
+    margin-top: 5px;
+    margin-right: 5px;
 }
 
 .navBarSecondary {
-    border: 2px solid black;
-    font-family: "dosFont";
-    height: 20px;
-}
-
-.navBarSecondary {
-    border: 2px solid black;
+    background-color: rgb(182, 205, 50);
+    border: 3px solid black; /* Borde de 3px sólido y negro en la parte superior e inferior */
+    border-width: 3px 0 0; /* Grosor de 3px arriba. Abajo 0 y en los lados izquierdo y derecho */
     font-family: "dosFont";
     height: 33px;
+}
+
+.navBarUnity {
+    background-color: rgb(252, 252, 252);
+    border: 3px solid black; /* Borde de 3px sólido y negro en la parte superior e inferior */
+    border-width: 3px 0 3px; /* Grosor de 3px arriba. Abajo 0 y en los lados izquierdo y derecho */
+    font-family: "dosFont";
+    height: 29px;
+}
+
+.underline {
+    text-decoration: underline;
+    text-decoration-color: rgb(0, 0, 0); /* Color del subrayado */
+    text-decoration-thickness: 3px; /* Grosor del subrayado */
+}
+
+.menuSection1 {
+    margin-left: 7px;
+    margin-right: 1%;
+}
+
+.menuSection2 {
+margin-right: 1%;
+}
+
+.menuSection4 {
+    margin-left: 7px;
+    margin-right: 1%;
+}
+
+.menuSection5 {
+    margin-right: 1%;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.cfgTxt {
+    font-family: "dosFont";
+    font-size: 30px;
 }
