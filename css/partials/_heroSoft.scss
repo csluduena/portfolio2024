@@ -3,11 +3,11 @@
 }
 
 .navBarMenu {
-    background-color: rgb(10, 113, 181);
+    background-color: #5154E6;
     display: flex;
     justify-content: space-between;
-    border: 3px solid black; /* Borde de 3px sólido y negro en la parte superior e inferior */
-    border-width: 3px 0 0; /* Grosor de 3px arriba. Abajo 0 y en los lados izquierdo y derecho */
+    border: 3px solid black;
+    border-width: 3px 0 0;
     font-family: "dosFont";
 }
 
@@ -28,7 +28,7 @@
     position: relative;
 }
 
-.hsMenu > hr {
+.hsMenu>hr {
     position: absolute;
     bottom: 3px;
     left: 4.7px;
@@ -44,11 +44,13 @@
     display: flex;
 }
 
-.hrCfgS, .hrCfgV, .hrCfgE {
+.hrCfgS,
+.hrCfgV,
+.hrCfgE {
     position: relative;
 }
 
-.hrCfgS > hr {
+.hrCfgS>hr {
     position: relative;
     bottom: 5.6px;
     left: 6.5px;
@@ -60,7 +62,7 @@
     /* padding: 0; */
 }
 
-.hrCfgV > hr {
+.hrCfgV>hr {
     position: relative;
     bottom: 6px;
     left: -0.3px;
@@ -72,7 +74,7 @@
     /* padding: 0; */
 }
 
-.hrCfgE > hr {
+.hrCfgE>hr {
     position: absolute;
     bottom: 3px;
     left: -0.3px;
@@ -148,32 +150,45 @@
 //!GRILLA 
 
 .optionsSystem {
-    background-color: white; /* Fondo blanco */
-    text-align: left; /* Texto alineado a la izquierda */
+    background-color: white;
+    /* Fondo blanco */
+    text-align: left;
+    /* Texto alineado a la izquierda */
     padding: 5px;
-    font-family: "dosFont"; /* Fuente dosFont */
-    font-size: 40px; /* Tamaño de fuente 30px */
+    font-family: "dosFont";
+    /* Fuente dosFont */
+    font-size: 40px;
+    /* Tamaño de fuente 30px */
 }
 
 .optionsSystem:hover:not(.focused),
 .optionsSystem:focus:not(.focused),
 .optionsSystem:focus-visible {
-    background-color: black; /* Cambio de color de fondo en hover y foco */
-    color: white; /* Cambio de color de texto en hover y foco */
+    background-color: black;
+    /* Cambio de color de fondo en hover y foco */
+    color: white;
+    /* Cambio de color de texto en hover y foco */
 }
 
 .optionsSystem.focused {
-    background-color: rgb(0, 0, 0); /* Fondo blanco cuando el elemento tiene foco */
-    color: rgb(255, 255, 255); /* Texto negro cuando el elemento tiene foco */
+    background-color: rgb(0, 0, 0);
+    /* Fondo blanco cuando el elemento tiene foco */
+    color: rgb(255, 255, 255);
+    /* Texto negro cuando el elemento tiene foco */
 }
 
-.hoverMS123:hover {
-    //background-color: rgb(10, 62, 30);
-}
+// .hoverMS123:hover {
+//     //background-color: rgb(10, 62, 30);
+// }
 
 /* Desactivar el cursor parpadeante en los elementos hsMenu, menuSection1, menuSection2, menuSection3 y grid-item */
-.hsMenu, .menuSection1, .menuSection2, .menuSection3, .optionsSystem {
-    caret-color: transparent; /* Hacer transparente el cursor parpadeante */
+.hsMenu,
+.menuSection1,
+.menuSection2,
+.menuSection3,
+.optionsSystem {
+    caret-color: transparent;
+    /* Hacer transparente el cursor parpadeante */
 }
 
 //!Explorer NAV 
@@ -182,12 +197,15 @@
 .main {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* 100% del viewport height */
+    height: 100vh;
+    /* 100% del viewport height */
 }
 
 .tableWrapper {
-    flex: 1; /* La tabla ocupa todo el espacio restante */
-    overflow: auto; /* Agregar barra de desplazamiento si el contenido es demasiado grande */
+    flex: 1;
+    /* La tabla ocupa todo el espacio restante */
+    overflow: auto;
+    /* Agregar barra de desplazamiento si el contenido es demasiado grande */
 }
 
 .tableCfg {
@@ -198,46 +216,66 @@
 }
 
 .tableCfg td {
-    width: 25%; /* Ancho igual para cada columna */
+    width: 25%;
+    /* Ancho igual para cada columna */
     border: 0px solid rgba(0, 0, 0, 0.227);
 }
 
 //!BOX NAV
 
 .navBarSecondary {
-    background-color: rgb(50, 205, 161);
+    background-color: #F3FC4D;
     border: 3px solid black;
     border-width: 3px 0 0;
     font-family: "dosFont";
     height: 33px;
-    display: flex; /* Convertir el contenedor en un flex container */
+    display: flex;
     align-content: flex-start;
 }
 
 // .menuSectionWithSubMenu {
 //     padding-right: 20px; /* Espacio entre cada elemento */
-    
+
 // }
 
 .menuSectionWithSubMenu:hover {
-    
-    background-color: aqua;
+    background-color: #5154E6;
 }
+
+// .subMenu {
+//     position: absolute;
+//     background-color:#F3FC4D;
+//     color: black;
+//     width: 230px;
+//     height: 260px;
+//     font-size: 30px;
+//     margin-left: -10px;
+//     display: none;
+//     padding: 10px;
+//     box-sizing: border-box;
+// }
 
 .subMenu {
     position: absolute;
-    background-color: grey;
-    color: white;
-    width: 230px;
-    height: 260px;
+    background-color: #F3FC4D;
+    color: black;
+    width: 202px;
+    height: 148px;
     font-size: 30px;
+    margin-left: -10px;
     display: none;
-    padding: 10px;
+    /* padding: 0px; */
     box-sizing: border-box;
+    /* margin-bottom: 4px; */
 }
 
+.num1Smenu {
+    margin-left: 10px;
+}
+
+
 .subMenuContent:hover {
-    background-color: rgb(85, 84, 84);
+    background-color: #5154E6;
 }
 
 .menuSectionWithSubMenu:hover .subMenu {
@@ -258,3 +296,85 @@
     padding-left: 10px;
     padding-right: 5px;
 }
+
+//!Folders
+
+.modal {
+    display: none;
+    /* Ocultar la ventana modal por defecto */
+    position: fixed;
+    /* Mantenerla en su lugar */
+    z-index: 1;
+    /* Situarla por encima de todo lo demás en la página */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Ancho completo */
+    height: 100%;
+    /* Altura completa */
+    overflow: auto;
+    /* Habilitar el desplazamiento si es necesario */
+    background-color: rgb(0, 0, 0);
+    /* Color de fondo negro con opacidad */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* También se agrega opacidad (black = 0) */
+}
+
+/* Contenido de la ventana modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 0;
+    border: 2px solid #888;
+    width: 500px;
+    height: 400px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.modal-title-bar {
+    background-color: #0000AA;
+    color: #FFFFFF;
+    padding-bottom: 40px;
+    font-size: 20px;
+}
+
+.modal-title {
+    font-family: dosFont;
+    position: absolute;
+    left: 50%;
+    margin-top: 7px;
+    font-size: 30px;
+    transform: translateX(-50%);
+}
+
+.close {
+    float: right;
+    font-size: 29px;
+    font-weight: bold;
+    margin-right: 1px;
+    margin-top: -6px;
+}
+
+.close:hover,
+.close:focus {
+    color: #FF0000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 20px;
+}
+

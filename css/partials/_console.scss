@@ -16,7 +16,8 @@
 
 //!Consola Input
 
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
 }
@@ -50,11 +51,13 @@ body, html {
 }
 
 .mainTitleDos span.green {
-    color: #00ff00; /* Rojo */
+    color: #00ff00;
+    /* Rojo */
 }
 
 .mainTitleDos span.red {
-    color: #ff0000; /* Rojo */
+    color: #ff0000;
+    /* Rojo */
 }
 
 .mainSubTitleDos {
@@ -81,7 +84,8 @@ body, html {
 #consoleContent {
     white-space: pre;
     margin-left: 0px;
-    margin-bottom: 5px; /* Ajuste del margen inferior */
+    margin-bottom: 5px;
+    /* Ajuste del margen inferior */
     line-height: 32px;
 }
 
@@ -98,9 +102,12 @@ body, html {
     left: 10px;
     color: #b5b5b5;
     font-size: 22px;
-    line-height: 26px; /* Alinear con el texto del textarea */
-    margin-top: -2px; /* Ajuste del margen superior */
-    margin-bottom: 5px; /* Ajuste del margen inferior */
+    line-height: 26px;
+    /* Alinear con el texto del textarea */
+    margin-top: -2px;
+    /* Ajuste del margen superior */
+    margin-bottom: 5px;
+    /* Ajuste del margen inferior */
 }
 
 #inputLine {
@@ -130,7 +137,8 @@ body, html {
     font-size: 25px;
 }
 
-.borderBottom, .borderTop {
+.borderBottom,
+.borderTop {
     font-size: 19px;
     margin-bottom: 2.34%;
 }

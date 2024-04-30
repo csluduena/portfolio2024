@@ -41,11 +41,11 @@
 }
 
 .navBarMenu {
-  background-color: rgb(10, 113, 181);
+  background-color: #5154E6;
   display: flex;
   justify-content: space-between;
-  border: 3px solid black; /* Borde de 3px sólido y negro en la parte superior e inferior */
-  border-width: 3px 0 0; /* Grosor de 3px arriba. Abajo 0 y en los lados izquierdo y derecho */
+  border: 3px solid black;
+  border-width: 3px 0 0;
   font-family: "dosFont";
 }
 
@@ -82,7 +82,9 @@
   display: flex;
 }
 
-.hrCfgS, .hrCfgV, .hrCfgE {
+.hrCfgS,
+.hrCfgV,
+.hrCfgE {
   position: relative;
 }
 
@@ -171,40 +173,56 @@
 }
 
 .optionsSystem {
-  background-color: white; /* Fondo blanco */
-  text-align: left; /* Texto alineado a la izquierda */
+  background-color: white;
+  /* Fondo blanco */
+  text-align: left;
+  /* Texto alineado a la izquierda */
   padding: 5px;
-  font-family: "dosFont"; /* Fuente dosFont */
-  font-size: 40px; /* Tamaño de fuente 30px */
+  font-family: "dosFont";
+  /* Fuente dosFont */
+  font-size: 40px;
+  /* Tamaño de fuente 30px */
 }
 
 .optionsSystem:hover:not(.focused),
 .optionsSystem:focus:not(.focused),
 .optionsSystem:focus-visible {
-  background-color: black; /* Cambio de color de fondo en hover y foco */
-  color: white; /* Cambio de color de texto en hover y foco */
+  background-color: black;
+  /* Cambio de color de fondo en hover y foco */
+  color: white;
+  /* Cambio de color de texto en hover y foco */
 }
 
 .optionsSystem.focused {
-  background-color: rgb(0, 0, 0); /* Fondo blanco cuando el elemento tiene foco */
-  color: rgb(255, 255, 255); /* Texto negro cuando el elemento tiene foco */
+  background-color: rgb(0, 0, 0);
+  /* Fondo blanco cuando el elemento tiene foco */
+  color: rgb(255, 255, 255);
+  /* Texto negro cuando el elemento tiene foco */
 }
 
 /* Desactivar el cursor parpadeante en los elementos hsMenu, menuSection1, menuSection2, menuSection3 y grid-item */
-.hsMenu, .menuSection1, .menuSection2, .menuSection3, .optionsSystem {
-  caret-color: transparent; /* Hacer transparente el cursor parpadeante */
+.hsMenu,
+.menuSection1,
+.menuSection2,
+.menuSection3,
+.optionsSystem {
+  caret-color: transparent;
+  /* Hacer transparente el cursor parpadeante */
 }
 
 /* Establecer el tamaño de la tabla al 100% del ancho y alto del main */
 .main {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* 100% del viewport height */
+  height: 100vh;
+  /* 100% del viewport height */
 }
 
 .tableWrapper {
-  flex: 1; /* La tabla ocupa todo el espacio restante */
-  overflow: auto; /* Agregar barra de desplazamiento si el contenido es demasiado grande */
+  flex: 1;
+  /* La tabla ocupa todo el espacio restante */
+  overflow: auto;
+  /* Agregar barra de desplazamiento si el contenido es demasiado grande */
 }
 
 .tableCfg {
@@ -215,38 +233,45 @@
 }
 
 .tableCfg td {
-  width: 25%; /* Ancho igual para cada columna */
+  width: 25%;
+  /* Ancho igual para cada columna */
   border: 0px solid rgba(0, 0, 0, 0.227);
 }
 
 .navBarSecondary {
-  background-color: rgb(50, 205, 161);
+  background-color: #F3FC4D;
   border: 3px solid black;
   border-width: 3px 0 0;
   font-family: "dosFont";
   height: 33px;
-  display: flex; /* Convertir el contenedor en un flex container */
+  display: flex;
   align-content: flex-start;
 }
 
 .menuSectionWithSubMenu:hover {
-  background-color: aqua;
+  background-color: #5154E6;
 }
 
 .subMenu {
   position: absolute;
-  background-color: grey;
-  color: white;
-  width: 230px;
-  height: 260px;
+  background-color: #F3FC4D;
+  color: black;
+  width: 202px;
+  height: 148px;
   font-size: 30px;
+  margin-left: -10px;
   display: none;
-  padding: 10px;
+  /* padding: 0px; */
   box-sizing: border-box;
+  /* margin-bottom: 4px; */
+}
+
+.num1Smenu {
+  margin-left: 10px;
 }
 
 .subMenuContent:hover {
-  background-color: rgb(85, 84, 84);
+  background-color: #5154E6;
 }
 
 .menuSectionWithSubMenu:hover .subMenu {
@@ -268,6 +293,85 @@
   padding-right: 5px;
 }
 
+.modal {
+  display: none;
+  /* Ocultar la ventana modal por defecto */
+  position: fixed;
+  /* Mantenerla en su lugar */
+  z-index: 1;
+  /* Situarla por encima de todo lo demás en la página */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Ancho completo */
+  height: 100%;
+  /* Altura completa */
+  overflow: auto;
+  /* Habilitar el desplazamiento si es necesario */
+  background-color: rgb(0, 0, 0);
+  /* Color de fondo negro con opacidad */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* También se agrega opacidad (black = 0) */
+}
+
+/* Contenido de la ventana modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 0;
+  border: 2px solid #888;
+  width: 500px;
+  height: 400px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.modal-title-bar {
+  background-color: #0000AA;
+  color: #FFFFFF;
+  padding-bottom: 40px;
+  font-size: 20px;
+}
+
+.modal-title {
+  font-family: dosFont;
+  position: absolute;
+  left: 50%;
+  margin-top: 7px;
+  font-size: 30px;
+  transform: translateX(-50%);
+}
+
+.close {
+  float: right;
+  font-size: 29px;
+  font-weight: bold;
+  margin-right: 1px;
+  margin-top: -6px;
+}
+
+.close:hover,
+.close:focus {
+  color: #FF0000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
 #consoleBody {
   background: #000;
   font-family: "dosFont";
@@ -284,7 +388,8 @@
   position: relative;
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
 }
@@ -318,11 +423,13 @@ body, html {
 }
 
 .mainTitleDos span.green {
-  color: #00ff00; /* Rojo */
+  color: #00ff00;
+  /* Rojo */
 }
 
 .mainTitleDos span.red {
-  color: #ff0000; /* Rojo */
+  color: #ff0000;
+  /* Rojo */
 }
 
 .mainSubTitleDos {
@@ -342,7 +449,8 @@ body, html {
 #consoleContent {
   white-space: pre;
   margin-left: 0px;
-  margin-bottom: 5px; /* Ajuste del margen inferior */
+  margin-bottom: 5px;
+  /* Ajuste del margen inferior */
   line-height: 32px;
 }
 
@@ -351,9 +459,12 @@ body, html {
   left: 10px;
   color: #b5b5b5;
   font-size: 22px;
-  line-height: 26px; /* Alinear con el texto del textarea */
-  margin-top: -2px; /* Ajuste del margen superior */
-  margin-bottom: 5px; /* Ajuste del margen inferior */
+  line-height: 26px;
+  /* Alinear con el texto del textarea */
+  margin-top: -2px;
+  /* Ajuste del margen superior */
+  margin-bottom: 5px;
+  /* Ajuste del margen inferior */
 }
 
 #inputLine {
@@ -383,7 +494,8 @@ body, html {
   font-size: 25px;
 }
 
-.borderBottom, .borderTop {
+.borderBottom,
+.borderTop {
   font-size: 19px;
   margin-bottom: 2.34%;
 }
@@ -402,6 +514,104 @@ body, html {
   color: #555555;
   margin-top: -2.3%;
   margin-left: 16%;
+}
+
+/* styles.css */
+.dos-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.dos-title-bar {
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  border-bottom: 1px solid #fff;
+}
+
+.dos-title {
+  font-size: 16px;
+}
+
+.dos-content {
+  padding: 10px;
+}
+
+#txt-content {
+  white-space: pre-wrap;
+  font-size: 14px;
+}
+
+.modal-contentTXT {
+  display: flex; /* Usar flexbox para una mejor distribución de los elementos hijos */
+  flex-direction: column; /* Organizar los elementos hijos en una columna */
+  justify-content: space-between; /* Distribuir el espacio entre los elementos hijos */
+  width: 800px; /* Ancho de la ventana modal */
+  height: 600px; /* Altura de la ventana modal */
+  position: absolute; /* Posición absoluta para permitir que se mueva */
+  top: 50%; /* Centrar la ventana modal verticalmente */
+  left: 50%; /* Centrar la ventana modal horizontalmente */
+  transform: translate(-50%, -50%); /* Centrar la ventana modal en relación a su propia altura y anchura */
+  border: 2px solid #000;
+  box-shadow: 5px 5px #000;
+  background-color: blue; /* Color de fondo azul */
+  resize: both; /* Permite al usuario redimensionar la ventana modal en ambas direcciones */
+  overflow: auto; /* Asegura que el contenido no se desborde */
+}
+
+.modal-bodyTXT {
+  width: 100%; /* Ancho del textarea */
+  height: calc(100% - 30px); /* Altura del textarea, ajustada para la barra de título */
+  border: none; /* Remover el borde del textarea */
+  color: black;
+  font-family: heroSoft;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 10px; /* Espacio interior del textarea */
+  box-sizing: border-box; /* Asegurar que el padding no aumente el tamaño del textarea */
+}
+
+.modal-bodyTXT textarea {
+  width: 100%; /* Ancho del textarea */
+  height: 100%; /* Altura del textarea */
+  border: none; /* Remover el borde del textarea */
+  background-color: blue;
+  color: black;
+  resize: none;
+  font-family: heroSoft;
+  overflow-y: hidden;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 10px; /* Espacio interior del textarea */
+  box-sizing: border-box; /* Asegurar que el padding no aumente el tamaño del textarea */
+}
+
+.modal-title-barTXT {
+  cursor: move;
+  padding: 10px;
+  background-color: #F3FC4D;
+}
+
+.modal-titleTXT {
+  font-family: dosFont;
+  position: absolute;
+  left: 50%;
+  margin-top: 0px;
+  font-size: 30px;
+  transform: translateX(-50%);
+}
+
+.modal-bodyTXT textarea {
+  /* ...resto del código... */
+  margin: 0; /* Restablecer los márgenes */
+  padding: 0; /* Restablecer el padding */
+  border: none; /* Remover el borde */
+  outline: none; /* Remover el contorno */
+  box-shadow: none; /* Remover la sombra */
+  resize: none; /* Desactivar la capacidad de redimensionar */
+  overflow: none; /* Asegurar que el contenido no se desborde */
+  /* ...resto del código... */
 }
 
 .backLoadingColor {
