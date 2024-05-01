@@ -1,0 +1,56 @@
+{
+    "desktop": {
+        "aboutme.txt": {
+            "id": "aboutme",
+            "type": "text_file",
+            "content": "./textfiles/aboutme.txt"
+        },
+        "personal_resume.txt": {
+            "id": "personalResume",
+            "type": "text_file",
+            "content": "./textfiles/personal_resume.txt"
+        },
+        "portfolio": {
+            "id": "portfolioFolder",
+            "type": "folder",
+            "content": {
+                "project1.txt": {
+                    "id": "",
+                    "type": "text_file",
+                    "content": "./textfiles/project1.txt"
+                },
+                "project2.txt": {
+                    "id": "",
+                    "type": "text_file",
+                    "content": "./textfiles/project2.txt"
+                },
+                "varios": {
+                    "id": "",
+                    "type": "folder",
+                    "content": "./folders/carpeta1"
+                }
+            }
+        },
+        "Certificates": {
+            "id": "certificates",
+            "type": "folder",
+            "content": {
+                "Web Developer Certificate.jpg": {
+                    "id": "",
+                    "type": "image",
+                    "content": "./folders/certificates/webDeveloperCertificate.jpg"
+                },
+                "Javascript Certificate.jpg": {
+                    "id": "",
+                    "type": "image",
+                    "content": "main/data/folders/Javascript Certificate.jpg"
+                }
+            }
+        },
+        "explorer.exe": {
+            "id": "",
+            "type": "application",
+            "content": ""
+        }
+    }
+}
