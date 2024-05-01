@@ -1,9 +1,10 @@
 // Agregar un controlador de eventos de doble clic a cada elemento que representa un archivo de texto
 document.querySelectorAll('.optionsSystem').forEach((element) => {
-    if (element.textContent.endsWith('.txt')) {
+    const fileName = element.textContent;
+    if (fileName.endsWith('.txt')) {
         element.addEventListener('dblclick', () => {
             // Construir la URL del archivo de texto
-            var url = '../textfiles/' + element.textContent;
+            const url = '../textfiles/' + fileName;
 
             // Utilizar la API Fetch para cargar el contenido del archivo de texto
             fetch(url)
@@ -11,7 +12,7 @@ document.querySelectorAll('.optionsSystem').forEach((element) => {
                 .then(contents => {
                     // Mostrar el contenido del archivo de texto en la ventana modal
                     document.querySelector('.modal-bodyTXT textarea').textContent = contents;
-                    document.querySelector('.modal-title').textContent = element.textContent;
+                    document.querySelector('.modal-title').textContent = fileName;
                     var modal = document.getElementById('myModal');
                     modal.style.display = 'block';
                     modal.style.width = document.documentElement.clientWidth + 'px';
@@ -19,9 +20,13 @@ document.querySelectorAll('.optionsSystem').forEach((element) => {
                 })
                 .catch(() => console.log('No se pudo cargar el archivo de texto'));
         });
+    } else {
+        element.addEventListener('dblclick', () => {
+            // Simular la apertura de una carpeta normalmente
+            //alert("Abriendo carpeta: " + fileName);
+        });
     }
 });
-
 
 var modalContent = document.querySelector('.modal-contentTXT');
 var modalTitleBar = document.querySelector('.modal-title-barTXT');
@@ -46,3 +51,11 @@ window.addEventListener('mouseup', function() {
 });
 
 
+// Selecciona el elemento textarea
+let textarea = document.querySelector('textarea');
+
+// Agrega una regla de estilo CSS para cambiar el color del scrollbar
+textarea.style.scrollbarColor = '#F3544D #e1f34d'; // rojo en WebKit (Chrome, Safari) y verde en Firefox
+textarea.style.scrollbarColor = 'red'; // solo rojo en WebKit
+textarea.style.scrollbarColor = 'green'; // solo verde en Firefox
+//textarea.style.scrollbarWidth = 'thin'; // Puedes usar 'thin', 'auto' o 'none'

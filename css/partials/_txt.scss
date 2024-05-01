@@ -42,33 +42,32 @@
     overflow: auto; /* Asegura que el contenido no se desborde */
 }
 
-.modal-bodyTXT {
-    width: 100%; /* Ancho del textarea */
-    height: calc(100% - 30px); /* Altura del textarea, ajustada para la barra de título */
-    border: none; /* Remover el borde del textarea */
-    color: black;
-    font-family: heroSoft;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    padding: 10px; /* Espacio interior del textarea */
-    box-sizing: border-box; /* Asegurar que el padding no aumente el tamaño del textarea */
-}
+// .modal-bodyTXT {
+//     width: 100%;
+//     height: calc(100% - 30px);
+//     border: none;
+//     color: black;
+//     font-family: heroSoft;
+//     white-space: pre-wrap;
+//     word-wrap: break-word;
+//     padding: 3px;
+//     margin-top: -2px;
+//     font-size: 3px;
+//     box-sizing: border-box;
+// }
 
-.modal-bodyTXT textarea {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background-color: blue;
-    color: black;
-    resize: none;
-    font-family: dosFont;
-    overflow-y: hidden;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    padding: 10px;
-    box-sizing: border-box;
-    font-size: 20px;
-}
+// .modal-bodyTXT {
+//     width: 100%; /* Ancho del textarea */
+//     height: calc(100% - 30px); /* Altura del textarea, ajustada para la barra de título */
+//     border: none; /* Remover el borde del textarea */
+//     color: black;
+//     font-family: heroSoft;
+//     white-space: pre-wrap;
+//     word-wrap: break-word;
+//     padding: 10px; /* Espacio interior del textarea */
+//     box-sizing: border-box; /* Asegurar que el padding no aumente el tamaño del textarea */
+// }
+
 
 .modal-title-barTXT {
     cursor: move;
@@ -87,30 +86,41 @@
 }
 
 
-
-.modal-bodyTXT textarea {
-    /* ...resto del código... */
-    margin: 0; /* Restablecer los márgenes */
-    padding: 0; /* Restablecer el padding */
-    border: none; /* Remover el borde */
-    outline: none; /* Remover el contorno */
-    box-shadow: none; /* Remover la sombra */
-    resize: none; /* Desactivar la capacidad de redimensionar */
-    overflow: none; /* Asegurar que el contenido no se desborde */
-    /* ...resto del código... */
-}
-
-
 //TODO BARRA DESPLAZADORA TEXTOS
 
-.modal-contentTXT::-webkit-scrollbar {
-    width: 20px; /* Ancho de la barra de desplazamiento */
+.modal-bodyTXT {
+    width: 100%;
+    height: calc(100% - 30px);
+    border: none;
+    color: black;
+    font-family: heroSoft;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    /* padding: 3px; */
+    margin-top: 0px;
+    font-size: 0px;
+    box-sizing: border-box;
 }
 
-.modal-contentTXT::-webkit-scrollbar-track {
-    background: #F5F5F5; /* Color de fondo de la barra de desplazamiento */
+.modal-bodyTXT textarea {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    border: none;
+    background-color: blue;
+    color: black;
+    resize: none;
+    font-family: dosFont;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
 }
 
-.modal-contentTXT::-webkit-scrollbar-thumb {
-    background: #F3544D; /* Color del control deslizante de la barra de desplazamiento */
-}
+// textarea::-webkit-scrollbar {
+//     width: 15px; /* Ancho deseado */
+// }
+
+// textarea::-webkit-scrollbar-thumb {
+//     background: #F3544D; /* Color del control deslizante de la barra de desplazamiento */
+// }

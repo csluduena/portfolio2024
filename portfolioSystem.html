@@ -69,8 +69,8 @@
         <table id="nope" class="tableCfg">
             <tbody>
                 <tr>
-                    <td class="pointer optionsSystem">ABOUT ME.txt</td>
-                    <td class="pointer optionsSystem">ABOUT HeroSoft</td>
+                    <td id="fileTxt" class="pointer optionsSystem">About Me.txt</td>
+                    <td class="pointer optionsSystem">About HeroSoft</td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"> </td>
                 </tr>
@@ -87,55 +87,55 @@
                     <td class="pointer optionsSystem"></td>
                 </tr>
                 <tr>
-                    <td class="pointer optionsSystem">PORTFOLIO</td>
+                    <td id="carpeta1" class="pointer optionsSystem folder">Portfolio</td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                 </tr>
                 <tr>
-                    <td class="pointer optionsSystem">CERTIFICATES</td>
+                    <td class="pointer optionsSystem folder">Certificates</td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                 </tr>
                 <tr>
-                    <td class="pointer optionsSystem">CONTACT ME</td>
+                    <td class="pointer optionsSystem folder">Contact Me</td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                 </tr>
                 <tr>
-                    <td class="pointer optionsSystem">NOTEPAD</td>
+                    <td class="pointer optionsSystem folder">Notepad</td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                 </tr>
                 <tr>
-                    <td class="pointer optionsSystem">CALC</td>
+                    <td class="pointer optionsSystem folder">Calc</td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                 </tr>
                 <tr>
-                    <td class="pointer optionsSystem">CALENDAR</td>
+                    <td class="pointer optionsSystem folder">Calendar</td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                 </tr>
                 <tr>
-                    <td class="pointer optionsSystem">PAINT</td>
+                    <td class="pointer optionsSystem folder">Paint</td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                 </tr>
                 <tr>
-                    <td class="pointer optionsSystem">TERMINAL</td>
+                    <td class="pointer optionsSystem folder">Terminal</td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                 </tr>
                 <tr>
-                    <td class="pointer optionsSystem">GAMES</td>
+                    <td class="pointer optionsSystem folder">Games</td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
                     <td class="pointer optionsSystem"></td>
@@ -148,8 +148,20 @@
         <!--Footer Area-->
     </footer>
 
+    <!-- HTML Para los tipo Carpetas -->
+    <div id="myModalCarpet" class="modalCarpet">
+        <div class="modal-contentCarpet">
+            <div class="modal-title-barCarpet">
+                <span class="modal-titleCarpet"></span>
+                <span class="closeCarpet">×</span>
+            </div>
+            <div class="modal-bodyCarpet">
+                <span></span>
+            </div>
+        </div>
+    </div>
 
-    <!--!Hiden Folders-->
+    <!-- HTML Para los tipo txt -->
     <div id="myModal" class="modal">
         <div class="modal-contentTXT">
             <div class="modal-title-barTXT">
@@ -157,7 +169,7 @@
                 <span class="close">×</span>
             </div>
             <div class="modal-bodyTXT">
-                <textarea><!--Contenido de la Carpeta--></textarea>
+                <textarea></textarea>
             </div>
         </div>
     </div>
