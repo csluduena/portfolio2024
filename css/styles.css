@@ -46,6 +46,10 @@
   background-color: rgb(20, 48, 52);
 }
 
+body {
+  scrollbar-color: #F3544D #ee8984;
+}
+
 .navBarMenu {
   background-color: #5154E6;
   display: flex;
@@ -178,18 +182,6 @@
   /* padding-top: 12px; */
 }
 
-.optionsSystem {
-  background-color: white;
-  /* Fondo blanco */
-  text-align: left;
-  /* Texto alineado a la izquierda */
-  padding: 5px;
-  font-family: "dosFont";
-  /* Fuente dosFont */
-  font-size: 40px;
-  /* Tamaño de fuente 30px */
-}
-
 .optionsSystem:hover:not(.focused),
 .optionsSystem:focus:not(.focused),
 .optionsSystem:focus-visible {
@@ -224,24 +216,64 @@
   /* 100% del viewport height */
 }
 
-.tableWrapper {
-  flex: 1;
-  /* La tabla ocupa todo el espacio restante */
-  overflow: auto;
-  /* Agregar barra de desplazamiento si el contenido es demasiado grande */
-}
-
 .tableCfg {
+  background-color: white;
   width: 100%;
   height: 80vh;
-  border: 3px solid rgba(0, 0, 0, 0.329);
+  border: 21px outset #6276a5;
   border-collapse: collapse;
 }
 
-.tableCfg td {
-  width: 25%;
-  /* Ancho igual para cada columna */
-  border: 0px solid rgba(0, 0, 0, 0.227);
+.optionsSystem {
+  background-color: white;
+  text-align: left;
+  /* padding: 1px; */
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: "dosFont";
+  font-size: 40px;
+}
+
+.modal-titleTXT, .modal-titleCarpet {
+  white-space: nowrap;
+}
+
+.optionsSystem {
+  display: flex;
+  margin-right: 0px;
+  align-items: center;
+}
+
+td {
+  padding-left: 10px;
+  /* Espacio interno a la izquierda */
+  padding-right: 10px;
+  /* Espacio interno a la derecha */
+}
+
+tr {
+  width: -moz-max-content;
+  /* width: max-content; */
+  /* height: 1.657em; */
+  min-height: 66px;
+  min-width: 466px;
+}
+
+tbody {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  /* grid-auto-rows: minmax(auto, auto); */
+  gap: 0;
+}
+
+tr:nth-child(1) td:nth-child(n+1):nth-child(-n+12) {
+  grid-column: span 12;
+  /* Ocupa las 12 columnas en la primera fila */
+}
+
+tr:nth-child(2) td:nth-child(n+13):nth-child(-n+24) {
+  grid-column: span 12;
+  /* Ocupa las 12 columnas en la segunda fila */
 }
 
 .navBarSecondary {
@@ -359,7 +391,8 @@
   transform: translateX(-50%);
 }
 
-.close, .closeCarpet {
+.close,
+.closeCarpet {
   float: right;
   font-size: 29px;
   font-weight: bold;

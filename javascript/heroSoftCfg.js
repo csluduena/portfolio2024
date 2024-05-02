@@ -2,11 +2,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let focusableElements = Array.from(document.querySelectorAll('.hsMenu, .menuSection1, .menuSection2, .menuSection3, .optionsSystem'));
     let currentFocusIndex = 0;
 
+    // Variables relacionadas con los modales de archivo de texto
     var modalTXT = document.getElementById("myModal");
-    var modalCarpet = document.getElementById("myModalCarpet");
     var modalTitleTXT = document.querySelector(".modal-titleTXT");
-    var modalTitleCarpet = document.querySelector(".modal-titleCarpet");
     var closeButtonTXT = document.querySelector(".close");
+
+    // Variables relacionadas con los modales de carpeta
+    var modalCarpet = document.getElementById("myModalCarpet");
+    var modalTitleCarpet = document.querySelector(".modal-titleCarpet");
     var closeButtonCarpet = document.querySelector(".closeCarpet");
 
     focusableElements[currentFocusIndex].focus();
@@ -38,21 +41,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         });
     });
-
-    // Obtener los elementos modal-contentTXT y modal-contentCarpet
-var modalContentTXT = document.querySelector('.modal-contentTXT');
-var modalContentCarpet = document.querySelector('.modal-contentCarpet');
-
-// Establecer el ancho y la altura máximos
-var minWidth = '522px';
-var minHeight = '374px';
-
-// Aplicar estilos de ancho y altura máximos
-modalContentTXT.style.minWidth = minWidth;
-modalContentTXT.style.minHeight = minHeight;
-
-modalContentCarpet.style.minWidth = minWidth;
-modalContentCarpet.style.minHeight = minHeight;
 
     closeButtonTXT.onclick = function() {
         modalTXT.style.display = "none";
@@ -94,78 +82,551 @@ modalContentCarpet.style.minHeight = minHeight;
         isDragging = false;
     });
 
+// Establecer el ancho y la altura máximos
+var minWidth = '700px';
+var minHeight = '375px';
+// Aplicar estilos de ancho y altura máximos
+modalContentTXT.style.minWidth = minWidth;
+modalContentTXT.style.minHeight = minHeight;
+modalContentCarpet.style.minWidth = minWidth;
+modalContentCarpet.style.minHeight = minHeight;
 
-    fetch('./system.json')
-    .then(response => response.json())
-    .then(data => {
-        for (let item in data.desktop) {
-            let element = document.getElementById(data.desktop[item].id);
-            if (element) {
-                element.addEventListener('dblclick', () => {
-                    if (data.desktop[item].type === 'text_file') {
-                        const url = data.desktop[item].content;
-                        fetch(url)
-                            .then(response => response.text())
-                            .then(contents => {
-                                document.querySelector('.modal-bodyTXT textarea').textContent = contents;
-                                document.querySelector('.modal-titleTXT').textContent = item;
-                                modalTXT.style.display = 'block';
-                            })
-                            .catch(() => console.log('No se pudo cargar el archivo de texto'));
-                    } else if (data.desktop[item].type === 'folder') {
-                        const folderContent = document.createDocumentFragment();
-                        for (let subitem in data.desktop[item].content) {
-                            const p = document.createElement('p');
-                            // Usar el nombre del subitem en lugar del nombre del item
-                            // p.textContent = data.desktop[item].content[subitem].name || subitem;
-                            p.textContent = data.desktop[item].content[subitem].name;
-                            p.classList.add('folder-content'); // Agregar una clase específica
-                            folderContent.appendChild(p);
-                        }
-                        document.querySelector('.modal-bodyCarpet').innerHTML = '';
-                        document.querySelector('.modal-bodyCarpet').appendChild(folderContent);
-                        document.querySelector('.modal-titleCarpet').textContent = data.desktop[item].name || item;
-                        modalCarpet.style.display = 'block';
+const desktopContainer = document.querySelector('.tableCfg tbody');
+    const itemsPerColumn = 12; // Número de elementos por columna
+
+    function createElements(container, data) {
+        let rowIndex = 0;
+        let columnIndex = 0;
+
+        for (let key in data) {
+            const item = data[key];
+            const newElement = document.createElement('tr');
+            newElement.classList.add('pointer', 'optionsSystem');
+            newElement.textContent = item.name || key;
+            newElement.setAttribute('data-item-id', key);
+
+            let currentRow;
+            if (container.children.length > rowIndex) {
+                currentRow = container.children[rowIndex];
+            } else {
+                currentRow = document.createElement('tr');
+                container.appendChild(currentRow);
+            }
+
+            currentRow.appendChild(newElement);
+
+            // Dentro de la función openFolder() y createElements()
+
+            newElement.addEventListener('dblclick', () => {
+                if (item.type === 'text_file') {
+                    modalTitleTXT.textContent = item.name;
+                    fetch(item.path) // Obtener el contenido del archivo .txt
+                        .then(response => response.text())
+                        .then(text => {
+                            // Colocar el contenido en el textarea del modal
+                            document.querySelector('.modal-bodyTXT textarea').textContent = text;
+                            modalTXT.style.display = "block"; // Mostrar el modal
+                        })
+                        .catch(error => {
+                            console.error('Error al cargar el archivo:', error);
+                        });
+                } else if (item.type === 'folder') {
+                    openFolder(item);
+                }
+            });
+
+            //abrir Imagenes.
+            newElement.addEventListener('dblclick', () => {
+                if (item.type === 'text_file') {
+                    modalTitleTXT.textContent = item.name;
+                    fetch(item.path) // Obtener el contenido del archivo .txt
+                        .then(response => response.text())
+                        .then(text => {
+                            // Colocar el contenido en el textarea del modal
+                            document.querySelector('.modal-bodyTXT textarea').textContent = text;
+                            modalTXT.style.display = "block"; // Mostrar el modal
+                        })
+                        .catch(error => {
+                            console.error('Error al cargar el archivo:', error);
+                        });
+                } else if (item.type === 'folder') {
+                    openFolder(item);
+                }
+            });
+
+            newElement.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    if (item.type === 'text_file') {
+                        modalTitleTXT.textContent = item.name;
+                        modalTXT.style.display = "block";
+                    } else if (item.type === 'folder') {
+                        openFolder(item);
                     }
-                });
+                }
+            });
+
+            columnIndex++;
+            if (columnIndex === itemsPerColumn) {
+                columnIndex = 0;
+                rowIndex++;
             }
         }
-    })
-    .catch(error => console.error('Error:', error));
-
-
-document.addEventListener('keydown', function (event) {
-    if (event.key === 'ArrowDown') {
-        focusableElements[currentFocusIndex].classList.remove('focused');
-        currentFocusIndex = (currentFocusIndex + 4) % focusableElements.length;
-        focusableElements[currentFocusIndex].focus();
-        focusableElements[currentFocusIndex].classList.add('focused');
-    } else if (event.key === 'ArrowLeft' || (event.key === 'Tab' && event.shiftKey)) {
-        event.preventDefault();
-        focusableElements[currentFocusIndex].classList.remove('focused');
-        currentFocusIndex = (currentFocusIndex - 1 + focusableElements.length) % focusableElements.length;
-        focusableElements[currentFocusIndex].focus();
-        focusableElements[currentFocusIndex].classList.add('focused');
-    } else if (event.key === 'ArrowRight' || event.key === 'Tab') {
-        event.preventDefault();
-        focusableElements[currentFocusIndex].classList.remove('focused');
-        currentFocusIndex = (currentFocusIndex + 1) % focusableElements.length;
-        focusableElements[currentFocusIndex].focus();
-        focusableElements[currentFocusIndex].classList.add('focused');
-    } else if (event.key === 'ArrowUp') {
-        event.preventDefault();
-        focusableElements[currentFocusIndex].classList.remove('focused');
-        if (focusableElements[currentFocusIndex].classList.contains('nope')) {
-            currentFocusIndex = focusableElements.findIndex(el => el.classList.contains('Start'));
-        } else if (focusableElements[currentFocusIndex].classList.contains('Start')) {
-            currentFocusIndex = focusableElements.findIndex(el => el.classList.contains('MENU'));
-        } else if (focusableElements[currentFocusIndex].classList.contains('optionsSystem')) {
-            currentFocusIndex = (currentFocusIndex - 4 + focusableElements.length) % focusableElements.length;
-        } else {
-            currentFocusIndex = (currentFocusIndex - 1 + focusableElements.length) % focusableElements.length;
-        }
-        focusableElements[currentFocusIndex].focus();
-        focusableElements[currentFocusIndex].classList.add('focused');
     }
+
+    function openFolder(folder) {
+        modalTitleCarpet.textContent = folder.name;
+        modalCarpet.style.display = "block";
+        const folderContent = folder.content;
+        const modalBody = document.querySelector('.modal-bodyCarpet');
+        modalBody.innerHTML = ''; // Limpiar contenido anterior
+        for (let key in folderContent) {
+            const item = folderContent[key];
+            const newItem = document.createElement('div');
+            newItem.textContent = item.name || key;
+            newItem.classList.add('pointer', 'optionsSystem');
+            modalBody.appendChild(newItem);
+    
+            // Evento para abrir archivos de texto y imágenes
+            newItem.addEventListener('dblclick', () => {
+                if (item.type === 'text_file') {
+                    // Código para abrir archivos de texto
+                    modalTitleTXT.textContent = item.name;
+                    modalTXT.style.display = "block";
+                } else if (item.type === 'image') {
+                    // Código para abrir imágenes
+                    modalTitleCarpet.textContent = item.name; // Establecer el nombre del archivo en el título del modal
+                    const image = document.createElement('img'); // Crear un elemento <img>
+                    image.src = item.path; // Establecer la URL de la imagen como src
+                    image.style.maxWidth = '99%'; // Establecer un ancho máximo para la imagen
+                    image.style.maxHeight = '99%'; // Establecer una altura máxima para la imagen
+                    modalBody.innerHTML = ''; // Limpiar contenido anterior
+                    modalBody.appendChild(image); // Agregar la imagen al cuerpo del modal
+                    modalCarpet.style.display = "block"; // Mostrar el modal
+                } else if (item.type === 'folder') {
+                    openFolder(item);
+                }
+            });
+    
+            // Evento para abrir archivos de texto con tecla Enter o espacio
+            newItem.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    if (item.type === 'text_file') {
+                        // Código para abrir archivos de texto
+                        modalTitleTXT.textContent = item.name;
+                        modalTXT.style.display = "block";
+                    } else if (item.type === 'folder') {
+                        openFolder(item);
+                    }
+                }
+            });
+        }
+    }
+    
+
+    // Cargar elementos desde el JSON
+    fetch('./system.json')
+        .then(response => response.json())
+        .then(data => {
+            let columnIndex = 0;
+            let rowIndex = 0;
+            createElements(desktopContainer, data.desktop);
+        })
+        .catch(error => console.error('Error:', error));
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowDown') {
+            focusableElements[currentFocusIndex].classList.remove('focused');
+            currentFocusIndex = (currentFocusIndex + 4) % focusableElements.length;
+            focusableElements[currentFocusIndex].focus();
+            focusableElements[currentFocusIndex].classList.add('focused');
+        } else if (event.key === 'ArrowLeft' || (event.key === 'Tab' && event.shiftKey)) {
+            event.preventDefault();
+            focusableElements[currentFocusIndex].classList.remove('focused');
+            currentFocusIndex = (currentFocusIndex - 1 + focusableElements.length) % focusableElements.length;
+            focusableElements[currentFocusIndex].focus();
+            focusableElements[currentFocusIndex].classList.add('focused');
+        } else if (event.key === 'ArrowRight' || event.key === 'Tab') {
+            event.preventDefault();
+            focusableElements[currentFocusIndex].classList.remove('focused');
+            currentFocusIndex = (currentFocusIndex + 1) % focusableElements.length;
+            focusableElements[currentFocusIndex].focus();
+            focusableElements[currentFocusIndex].classList.add('focused');
+        } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            focusableElements[currentFocusIndex].classList.remove('focused');
+            if (focusableElements[currentFocusIndex].classList.contains('nope')) {
+                currentFocusIndex = focusableElements.findIndex(el => el.classList.contains('Start'));
+            } else if (focusableElements[currentFocusIndex].classList.contains('Start')) {
+                currentFocusIndex = focusableElements.findIndex(el => el.classList.contains('MENU'));
+            } else if (focusableElements[currentFocusIndex].classList.contains('optionsSystem')) {
+                currentFocusIndex = (currentFocusIndex - 4 + focusableElements.length) % focusableElements.length;
+            } else {
+                currentFocusIndex = (currentFocusIndex - 1 + focusableElements.length) % focusableElements.length;
+            }
+            focusableElements[currentFocusIndex].focus();
+            focusableElements[currentFocusIndex].classList.add('focused');
+        }
+    });
 });
-});
+
+
+
+
+
+// s
+
+// 1 "About Me.txt"        13        25       37                                                
+// 2 "Personal Resume.txt" 14        26       38
+// 3 "Portfolio"           15        27       39
+// 4 "Certificates"        16        28       40
+// 5 "explorer.exe"        17        29       41
+// 6                       18        30       42
+// 7                       19        31       43
+// 8                       20        32       44
+// 9                       21        33       45
+// 10                      22        34       46
+// 11                      23        35       47
+// 12                      24        36       48
+
+// s
+
+
+
+
+
+
+
+
+
+
+
+
+// document.addEventListener('DOMContentLoaded', (event) => {
+    
+//     let focusableElements = Array.from(document.querySelectorAll('.hsMenu, .menuSection1, .menuSection2, .menuSection3, .optionsSystem'));
+//     let currentFocusIndex = 0;
+
+//     // Variables relacionadas con los modales de archivo de texto
+//     var modalTXT = document.getElementById("myModal");
+//     var modalTitleTXT = document.querySelector(".modal-titleTXT");
+//     var closeButtonTXT = document.querySelector(".close");
+
+//     // Variables relacionadas con los modales de carpeta
+//     var modalCarpet = document.getElementById("myModalCarpet");
+//     var modalTitleCarpet = document.querySelector(".modal-titleCarpet");
+//     var closeButtonCarpet = document.querySelector(".closeCarpet");
+
+//     focusableElements[currentFocusIndex].focus();
+//     focusableElements[currentFocusIndex].classList.add('focused');
+
+//     focusableElements.forEach((element, index) => {
+//         element.addEventListener('click', () => {
+//             focusableElements[currentFocusIndex].classList.remove('focused');
+//             currentFocusIndex = index;
+//             focusableElements[currentFocusIndex].focus();
+//             focusableElements[currentFocusIndex].classList.add('focused');
+//         });
+    
+
+//         element.addEventListener('dblclick', () => {
+//             modalTitleTXT.textContent = element.textContent;
+//             modalTitleCarpet.textContent = element.textContent;
+//             modalTXT.style.display = "none";
+//             modalCarpet.style.display = "none";
+//         });
+
+//         element.addEventListener('keydown', (event) => {
+//             console.log('Tecla presionada:', event.key);
+//             console.log('Elemento enfocado:', element);
+//             if (event.key === 'Enter' || event.key === ' ') {
+//                 modalTitleTXT.textContent = element.textContent;
+//                 modalTitleCarpet.textContent = element.textContent;
+//                 modalTXT.style.display = "none";
+//                 modalCarpet.style.display = "none";
+//             }
+//         });
+//     });
+
+//     closeButtonTXT.onclick = function() {
+//         modalTXT.style.display = "none";
+//     }
+
+//     closeButtonCarpet.onclick = function() {
+//         modalCarpet.style.display = "none";
+//     }
+
+//     var modalContentTXT = document.querySelector('.modal-contentTXT');
+//     var modalContentCarpet = document.querySelector('.modal-contentCarpet');
+//     var modalTitleBarTXT = document.querySelector('.modal-title-barTXT');
+//     var modalTitleBarCarpet = document.querySelector('.modal-title-barCarpet');
+//     var isDragging = false;
+//     var dragOffset = {x: 0, y: 0};
+
+//     modalTitleBarTXT.addEventListener('mousedown', function(e) {
+//         isDragging = true;
+//         dragOffset.x = e.clientX - modalContentTXT.offsetLeft;
+//         dragOffset.y = e.clientY - modalContentTXT.offsetTop;
+//     });
+
+//     modalTitleBarCarpet.addEventListener('mousedown', function(e) {
+//         isDragging = true;
+//         dragOffset.x = e.clientX - modalContentCarpet.offsetLeft;
+//         dragOffset.y = e.clientY - modalContentCarpet.offsetTop;
+//     });
+
+//     window.addEventListener('mousemove', function(e) {
+//         if (isDragging) {
+//             modalContentTXT.style.left = (e.clientX - dragOffset.x) + 'px';
+//             modalContentTXT.style.top = (e.clientY - dragOffset.y) + 'px';
+//             modalContentCarpet.style.left = (e.clientX - dragOffset.x) + 'px';
+//             modalContentCarpet.style.top = (e.clientY - dragOffset.y) + 'px';
+//         }
+//     });
+
+//     window.addEventListener('mouseup', function() {
+//         isDragging = false;
+//     });
+
+//     fetch('./system.json')
+//         .then(response => response.json())
+//         .then(data => {
+//             for (let item in data.desktop) {
+//                 let element = document.getElementById(item);
+//                 if (element) {
+//                     element.addEventListener('dblclick', () => {
+//                         if (data.desktop[item].type === 'text_file') {
+//                             modalTitleTXT.textContent = item;
+//                             modalTXT.style.display = 'block';
+//                         } else if (data.desktop[item].type === 'folder') {
+//                             modalTitleCarpet.textContent = data.desktop[item].name || item;
+//                             modalCarpet.style.display = 'block';
+//                         }
+//                     });
+//                 }
+//             }
+//         })
+//         .catch(error => console.error('Error:', error));
+
+
+//     document.addEventListener('keydown', function(event) {
+//         if (event.key === 'ArrowDown') {
+//             focusableElements[currentFocusIndex].classList.remove('focused');
+//             currentFocusIndex = (currentFocusIndex + 4) % focusableElements.length;
+//             focusableElements[currentFocusIndex].focus();
+//             focusableElements[currentFocusIndex].classList.add('focused');
+//         } else if (event.key === 'ArrowLeft' || (event.key === 'Tab' && event.shiftKey)) {
+//             event.preventDefault();
+//             focusableElements[currentFocusIndex].classList.remove('focused');
+//             currentFocusIndex = (currentFocusIndex - 1 + focusableElements.length) % focusableElements.length;
+//             focusableElements[currentFocusIndex].focus();
+//             focusableElements[currentFocusIndex].classList.add('focused');
+//         } else if (event.key === 'ArrowRight' || event.key === 'Tab') {
+//             event.preventDefault();
+//             focusableElements[currentFocusIndex].classList.remove('focused');
+//             currentFocusIndex = (currentFocusIndex + 1) % focusableElements.length;
+//             focusableElements[currentFocusIndex].focus();
+//             focusableElements[currentFocusIndex].classList.add('focused');
+//         } else if (event.key === 'ArrowUp') {
+//             event.preventDefault();
+//             focusableElements[currentFocusIndex].classList.remove('focused');
+//             if (focusableElements[currentFocusIndex].classList.contains('nope')) {
+//                 currentFocusIndex = focusableElements.findIndex(el => el.classList.contains('Start'));
+//             } else if (focusableElements[currentFocusIndex].classList.contains('Start')) {
+//                 currentFocusIndex = focusableElements.findIndex(el => el.classList.contains('MENU'));
+//             } else if (focusableElements[currentFocusIndex].classList.contains('optionsSystem')) {
+//                 currentFocusIndex = (currentFocusIndex - 4 + focusableElements.length) % focusableElements.length;
+//             } else {
+//                 currentFocusIndex = (currentFocusIndex - 1 + focusableElements.length) % focusableElements.length;
+//             }
+//             focusableElements[currentFocusIndex].focus();
+//             focusableElements[currentFocusIndex].classList.add('focused');
+//         }
+//     });
+// });
+
+
+// document.addEventListener('DOMContentLoaded', (event) => {
+//     let focusableElements = Array.from(document.querySelectorAll('.hsMenu, .menuSection1, .menuSection2, .menuSection3, .optionsSystem'));
+//     let currentFocusIndex = 0;
+
+//     var modalTXT = document.getElementById("myModal");
+//     var modalCarpet = document.getElementById("myModalCarpet");
+//     var modalTitleTXT = document.querySelector(".modal-titleTXT");
+//     var modalTitleCarpet = document.querySelector(".modal-titleCarpet");
+//     var closeButtonTXT = document.querySelector(".close");
+//     var closeButtonCarpet = document.querySelector(".closeCarpet");
+
+//     focusableElements[currentFocusIndex].focus();
+//     focusableElements[currentFocusIndex].classList.add('focused');
+
+//     focusableElements.forEach((element, index) => {
+//         element.addEventListener('click', () => {
+//             focusableElements[currentFocusIndex].classList.remove('focused');
+//             currentFocusIndex = index;
+//             focusableElements[currentFocusIndex].focus();
+//             focusableElements[currentFocusIndex].classList.add('focused');
+//         });
+
+//         element.addEventListener('dblclick', () => {
+//             modalTitleTXT.textContent = element.textContent;
+//             modalTitleCarpet.textContent = element.textContent;
+//             modalTXT.style.display = "none";
+//             modalCarpet.style.display = "none";
+//         });
+
+//         element.addEventListener('keydown', (event) => {
+//             console.log('Tecla presionada:', event.key);
+//             console.log('Elemento enfocado:', element);
+//             if (event.key === 'Enter' || event.key === ' ') {
+//                 modalTitleTXT.textContent = element.textContent;
+//                 modalTitleCarpet.textContent = element.textContent;
+//                 modalTXT.style.display = "none";
+//                 modalCarpet.style.display = "none";
+//             }
+//         });
+//     });
+
+//     // Obtener los elementos modal-contentTXT y modal-contentCarpet
+// var modalContentTXT = document.querySelector('.modal-contentTXT');
+// var modalContentCarpet = document.querySelector('.modal-contentCarpet');
+
+// // Establecer el ancho y la altura máximos
+// var minWidth = '522px';
+// var minHeight = '374px';
+
+// // Aplicar estilos de ancho y altura máximos
+// modalContentTXT.style.minWidth = minWidth;
+// modalContentTXT.style.minHeight = minHeight;
+
+// modalContentCarpet.style.minWidth = minWidth;
+// modalContentCarpet.style.minHeight = minHeight;
+
+//     closeButtonTXT.onclick = function() {
+//         modalTXT.style.display = "none";
+//     }
+
+//     closeButtonCarpet.onclick = function() {
+//         modalCarpet.style.display = "none";
+//     }
+
+//     var modalContentTXT = document.querySelector('.modal-contentTXT');
+//     var modalContentCarpet = document.querySelector('.modal-contentCarpet');
+//     var modalTitleBarTXT = document.querySelector('.modal-title-barTXT');
+//     var modalTitleBarCarpet = document.querySelector('.modal-title-barCarpet');
+//     var isDragging = false;
+//     var dragOffset = {x: 0, y: 0};
+
+//     modalTitleBarTXT.addEventListener('mousedown', function(e) {
+//         isDragging = true;
+//         dragOffset.x = e.clientX - modalContentTXT.offsetLeft;
+//         dragOffset.y = e.clientY - modalContentTXT.offsetTop;
+//     });
+
+//     modalTitleBarCarpet.addEventListener('mousedown', function(e) {
+//         isDragging = true;
+//         dragOffset.x = e.clientX - modalContentCarpet.offsetLeft;
+//         dragOffset.y = e.clientY - modalContentCarpet.offsetTop;
+//     });
+
+//     window.addEventListener('mousemove', function(e) {
+//         if (isDragging) {
+//             modalContentTXT.style.left = (e.clientX - dragOffset.x) + 'px';
+//             modalContentTXT.style.top = (e.clientY - dragOffset.y) + 'px';
+//             modalContentCarpet.style.left = (e.clientX - dragOffset.x) + 'px';
+//             modalContentCarpet.style.top = (e.clientY - dragOffset.y) + 'px';
+//         }
+//     });
+
+//     window.addEventListener('mouseup', function() {
+//         isDragging = false;
+//     });
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+//     fetch('./system.json')
+//     .then(response => response.json())
+//     .then(data => {
+//         for (let item in data.desktop) {
+//             let element = document.getElementById(data.desktop[item].id);
+//             if (element) {
+//                 element.addEventListener('dblclick', () => {
+//                     if (data.desktop[item].type === 'text_file') {
+//                         const url = data.desktop[item].content;
+//                         fetch(url)
+//                             .then(response => response.text())
+//                             .then(contents => {
+//                                 document.querySelector('.modal-bodyTXT textarea').textContent = contents;
+//                                 document.querySelector('.modal-titleTXT').textContent = item;
+//                                 modalTXT.style.display = 'block';
+//                             })
+//                             .catch(() => console.log('No se pudo cargar el archivo de texto'));
+//                     } else if (data.desktop[item].type === 'folder') {
+//                         const folderContent = document.createDocumentFragment();
+//                         for (let subitem in data.desktop[item].content) {
+//                             const p = document.createElement('p');
+//                             // Usar el nombre del subitem en lugar del nombre del item
+//                             // p.textContent = data.desktop[item].content[subitem].name || subitem;
+//                             p.textContent = data.desktop[item].content[subitem].name;
+//                             p.classList.add('folder-content'); // Agregar una clase específica
+//                             folderContent.appendChild(p);
+//                         }
+//                         document.querySelector('.modal-bodyCarpet').innerHTML = '';
+//                         document.querySelector('.modal-bodyCarpet').appendChild(folderContent);
+//                         document.querySelector('.modal-titleCarpet').textContent = data.desktop[item].name || item;
+//                         modalCarpet.style.display = 'block';
+//                     }
+//                 });
+//             }
+//         }
+//     })
+//     .catch(error => console.error('Error:', error));
+
+
+// document.addEventListener('keydown', function (event) {
+//     if (event.key === 'ArrowDown') {
+//         focusableElements[currentFocusIndex].classList.remove('focused');
+//         currentFocusIndex = (currentFocusIndex + 4) % focusableElements.length;
+//         focusableElements[currentFocusIndex].focus();
+//         focusableElements[currentFocusIndex].classList.add('focused');
+//     } else if (event.key === 'ArrowLeft' || (event.key === 'Tab' && event.shiftKey)) {
+//         event.preventDefault();
+//         focusableElements[currentFocusIndex].classList.remove('focused');
+//         currentFocusIndex = (currentFocusIndex - 1 + focusableElements.length) % focusableElements.length;
+//         focusableElements[currentFocusIndex].focus();
+//         focusableElements[currentFocusIndex].classList.add('focused');
+//     } else if (event.key === 'ArrowRight' || event.key === 'Tab') {
+//         event.preventDefault();
+//         focusableElements[currentFocusIndex].classList.remove('focused');
+//         currentFocusIndex = (currentFocusIndex + 1) % focusableElements.length;
+//         focusableElements[currentFocusIndex].focus();
+//         focusableElements[currentFocusIndex].classList.add('focused');
+//     } else if (event.key === 'ArrowUp') {
+//         event.preventDefault();
+//         focusableElements[currentFocusIndex].classList.remove('focused');
+//         if (focusableElements[currentFocusIndex].classList.contains('nope')) {
+//             currentFocusIndex = focusableElements.findIndex(el => el.classList.contains('Start'));
+//         } else if (focusableElements[currentFocusIndex].classList.contains('Start')) {
+//             currentFocusIndex = focusableElements.findIndex(el => el.classList.contains('MENU'));
+//         } else if (focusableElements[currentFocusIndex].classList.contains('optionsSystem')) {
+//             currentFocusIndex = (currentFocusIndex - 4 + focusableElements.length) % focusableElements.length;
+//         } else {
+//             currentFocusIndex = (currentFocusIndex - 1 + focusableElements.length) % focusableElements.length;
+//         }
+//         focusableElements[currentFocusIndex].focus();
+//         focusableElements[currentFocusIndex].classList.add('focused');
+//     }
+// });
+// });

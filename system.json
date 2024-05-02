@@ -1,39 +1,41 @@
 {
     "desktop": {
         "aboutme.txt": {
-            "name": "",
+            "name": "About Me.txt",
             "id": "aboutme",
             "type": "text_file",
-            "content": "./textfiles/aboutme.txt"
+            "path": "./textfiles/aboutme.txt"
         },
         "personal_resume.txt": {
-            "name": "",
+            "name": "Personal Resume.txt",
             "id": "personalResume",
             "type": "text_file",
-            "content": "./textfiles/personal_resume.txt"
+            "path": "./textfiles/personal_resume.txt"
         },
         "portfolio": {
             "name": "Portfolio",
             "id": "portfolioFolder",
             "type": "folder",
             "content": {
-                "project1.txt": {
-                    "name": "Project1",
+                "...": {
+                    "name": "",
                     "id": "",
-                    "type": "text_file",
-                    "content": "./textfiles/project1.txt"
+                    "type": "",
+                    "path": ""
                 },
                 "Web Developer Certificate.jpg": {
-                    "name": "",
+                    "name": "Web Developer Certificate.jpg",
                     "id": "",
                     "type": "image",
-                    "content": "./folders/certificates/webDeveloperCertificate.jpg"
+                    "path": "./folders/certificates/webDeveloperCertificate.jpg"
                 },
                 "varios": {
-                    "name": "",
+                    "name": "Varios",
                     "id": "",
                     "type": "folder",
-                    "content": "./folders/carpeta1"
+                    "content": {
+                        
+                    }
                 }
             }
         },
@@ -42,32 +44,37 @@
             "id": "certificates",
             "type": "folder",
             "content": {
-                "Web Developer Certificate": {
-                    "name": "Web Developer Certificate",
-                    "id": "webDeveloperCertificate",
-                    "type": "folder",
-                    "content": {
-                        "img": {
-                            "name": "Web Developer Certificate",
-                            "id": "webDeveloperCertificateImg",
-                            "type": "image",
-                            "path": "./folders/certificates/webDeveloperCertificate.jpg"
-                        }
-                    }
+                "img1": {
+                    "name": "Web Developer Certificate.jpg",
+                    "id": "webDeveloperCertificateImg",
+                    "type": "image",
+                    "path": "./folders/certificates/webDeveloperCertificate.jpg"
                 },
-                "Javascript Certificate": {
-                    "name":"Javascript Certificate",
+                "img2": {
+                    "name": "Javascript Certificate.jpg",
                     "id": "javascriptCertificate",
                     "type": "image",
-                    "content": "./folders/certificates/javascriptCertificate.jpg"
+                    "path": "./folders/certificates/webDeveloperCertificate.jpg"
+                },
+                "texttt": {
+                    "name": "Javascript Certificate.txt",
+                    "id": "tsxt",
+                    "type": "text_file",
+                    "path": "./textfiles/copia.txt"
                 }
             }
         },
         "explorer.exe": {
-            "name": "",
-            "id": "",
-            "type": "application",
+            "name": "explorer.exe",
+            "id": "explorer",
+            "type": "api",
             "content": ""
+        },
+        "personal_resume2.txt": {
+            "name": "Personal Resume.txt",
+            "id": "personalResume",
+            "type": "text_file",
+            "path": "./textfiles/personal_resume.txt"
         }
     }
 }
