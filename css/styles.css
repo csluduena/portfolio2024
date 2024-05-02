@@ -315,7 +315,7 @@
 }
 
 /* Contenido de la ventana modal */
-.modal {
+.modalCarpet {
   display: none;
   position: fixed;
   z-index: 1;
@@ -353,7 +353,7 @@
   transform: translateX(-50%);
 }
 
-.close {
+.close, .closeCarpet {
   float: right;
   font-size: 29px;
   font-weight: bold;
@@ -363,6 +363,13 @@
 
 .close:hover,
 .close:focus {
+  color: #FF0000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.closeCarpet:hover,
+.closeCarpet:hover {
   color: #FF0000;
   text-decoration: none;
   cursor: pointer;
@@ -544,25 +551,67 @@ html {
 }
 
 .modal-contentTXT {
-  display: flex; /* Usar flexbox para una mejor distribución de los elementos hijos */
-  flex-direction: column; /* Organizar los elementos hijos en una columna */
-  justify-content: space-between; /* Distribuir el espacio entre los elementos hijos */
-  width: 800px; /* Ancho de la ventana modal */
-  height: 600px; /* Altura de la ventana modal */
-  position: absolute; /* Posición absoluta para permitir que se mueva */
-  top: 50%; /* Centrar la ventana modal verticalmente */
-  left: 50%; /* Centrar la ventana modal horizontalmente */
-  transform: translate(-50%, -50%); /* Centrar la ventana modal en relación a su propia altura y anchura */
+  display: flex;
+  /* Usar flexbox para una mejor distribución de los elementos hijos */
+  flex-direction: column;
+  /* Organizar los elementos hijos en una columna */
+  justify-content: space-between;
+  /* Distribuir el espacio entre los elementos hijos */
+  width: 800px;
+  /* Ancho de la ventana modal */
+  height: 600px;
+  /* Altura de la ventana modal */
+  position: absolute;
+  /* Posición absoluta para permitir que se mueva */
+  top: 50%;
+  /* Centrar la ventana modal verticalmente */
+  left: 50%;
+  /* Centrar la ventana modal horizontalmente */
+  transform: translate(-50%, -50%);
+  /* Centrar la ventana modal en relación a su propia altura y anchura */
   border: 2px solid #000;
   box-shadow: 5px 5px #000;
-  background-color: blue; /* Color de fondo azul */
-  resize: both; /* Permite al usuario redimensionar la ventana modal en ambas direcciones */
-  overflow: auto; /* Asegura que el contenido no se desborde */
+  background-color: blue;
+  /* Color de fondo azul */
+  resize: both;
+  /* Permite al usuario redimensionar la ventana modal en ambas direcciones */
+  overflow: auto;
+  /* Asegura que el contenido no se desborde */
+}
+
+.modal-contentCarpet {
+  display: flex;
+  /* Usar flexbox para una mejor distribución de los elementos hijos */
+  flex-direction: column;
+  /* Organizar los elementos hijos en una columna */
+  justify-content: space-between;
+  /* Distribuir el espacio entre los elementos hijos */
+  width: 800px;
+  /* Ancho de la ventana modal */
+  height: 600px;
+  /* Altura de la ventana modal */
+  position: absolute;
+  /* Posición absoluta para permitir que se mueva */
+  top: 50%;
+  /* Centrar la ventana modal verticalmente */
+  left: 50%;
+  /* Centrar la ventana modal horizontalmente */
+  transform: translate(-50%, -50%);
+  /* Centrar la ventana modal en relación a su propia altura y anchura */
+  border: 2px solid #000;
+  box-shadow: 5px 5px #000;
+  background-color: blue;
+  /* Color de fondo azul */
+  resize: both;
+  /* Permite al usuario redimensionar la ventana modal en ambas direcciones */
+  overflow: auto;
+  /* Asegura que el contenido no se desborde */
 }
 
 .modal-title-barTXT {
   cursor: move;
-  padding: 10px;
+  /* padding: 10px; */
+  padding-top: 38px;
   background-color: #F3FC4D;
   border-bottom: 2px solid black;
 }
@@ -571,7 +620,7 @@ html {
   font-family: dosFont;
   position: absolute;
   left: 50%;
-  margin-top: 0px;
+  top: 5px;
   font-size: 30px;
   transform: translateX(-50%);
 }
@@ -603,6 +652,87 @@ html {
   padding: 10px;
   box-sizing: border-box;
   font-size: 18px;
+}
+
+.modal-bodyCarpet {
+  position: absolute;
+  top: 2em;
+  left: 0.4em;
+  border: none;
+  color: black;
+  font-family: dosFont;
+  /* padding: 3px; */
+  margin-top: 0px;
+  font-size: 30px;
+  box-sizing: border-box;
+}
+
+textarea {
+  scrollbar-color: #F3544D #ee8984;
+}
+
+.folder-content {
+  /* Estilos específicos para los elementos generados dentro del modal */
+  /* Por ejemplo: */
+  font-weight: bold;
+  color: rgb(0, 255, 4);
+}
+
+.closeCarpet {
+  /* float: right; */
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  /* margin-right: 100%; */
+  padding-top: 0px;
+  margin-top: 0px;
+  top: -7px;
+  padding-right: 6px;
+  padding-left: 8px;
+  padding-bottom: -1px;
+  margin-bottom: -6px;
+  /* bottom: 92.2%; */
+  right: -1px;
+  box-shadow: inset -20px -19px 0px 284px #000;
+  font-family: monospace;
+  color: white;
+}
+
+.close {
+  /* float: right; */
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  /* margin-right: 100%; */
+  padding-top: 0px;
+  margin-top: 0px;
+  top: -7px;
+  padding-right: 6px;
+  padding-left: 8px;
+  padding-bottom: -1px;
+  margin-bottom: -6px;
+  /* bottom: 92.2%; */
+  right: -1px;
+  box-shadow: inset -20px -19px 0px 284px #000;
+  font-family: monospace;
+  color: white;
+}
+
+.modal-titleCarpet {
+  font-family: dosFont;
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  font-size: 30px;
+  transform: translateX(-50%);
+}
+
+.modal-title-barCarpet {
+  cursor: move;
+  /* padding: 10px; */
+  padding-top: 38px;
+  background-color: #F3FC4D;
+  border-bottom: 2px solid black;
 }
 
 .backLoadingColor {

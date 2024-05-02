@@ -1,30 +1,36 @@
 {
     "desktop": {
         "aboutme.txt": {
+            "name": "",
             "id": "aboutme",
             "type": "text_file",
             "content": "./textfiles/aboutme.txt"
         },
         "personal_resume.txt": {
+            "name": "",
             "id": "personalResume",
             "type": "text_file",
             "content": "./textfiles/personal_resume.txt"
         },
         "portfolio": {
+            "name": "Portfolio",
             "id": "portfolioFolder",
             "type": "folder",
             "content": {
                 "project1.txt": {
+                    "name": "Project1",
                     "id": "",
                     "type": "text_file",
                     "content": "./textfiles/project1.txt"
                 },
-                "project2.txt": {
+                "Web Developer Certificate.jpg": {
+                    "name": "",
                     "id": "",
-                    "type": "text_file",
-                    "content": "./textfiles/project2.txt"
+                    "type": "image",
+                    "content": "./folders/certificates/webDeveloperCertificate.jpg"
                 },
                 "varios": {
+                    "name": "",
                     "id": "",
                     "type": "folder",
                     "content": "./folders/carpeta1"
@@ -32,22 +38,33 @@
             }
         },
         "Certificates": {
+            "name": "Certificates",
             "id": "certificates",
             "type": "folder",
             "content": {
-                "Web Developer Certificate.jpg": {
-                    "id": "",
-                    "type": "image",
-                    "content": "./folders/certificates/webDeveloperCertificate.jpg"
+                "Web Developer Certificate": {
+                    "name": "Web Developer Certificate",
+                    "id": "webDeveloperCertificate",
+                    "type": "folder",
+                    "content": {
+                        "img": {
+                            "name": "Web Developer Certificate",
+                            "id": "webDeveloperCertificateImg",
+                            "type": "image",
+                            "path": "./folders/certificates/webDeveloperCertificate.jpg"
+                        }
+                    }
                 },
-                "Javascript Certificate.jpg": {
-                    "id": "",
+                "Javascript Certificate": {
+                    "name":"Javascript Certificate",
+                    "id": "javascriptCertificate",
                     "type": "image",
-                    "content": "main/data/folders/Javascript Certificate.jpg"
+                    "content": "./folders/certificates/javascriptCertificate.jpg"
                 }
             }
         },
         "explorer.exe": {
+            "name": "",
             "id": "",
             "type": "application",
             "content": ""

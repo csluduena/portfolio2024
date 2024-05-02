@@ -321,7 +321,7 @@
 }
 
 /* Contenido de la ventana modal */
-.modal {
+.modalCarpet {
     display: none;
     position: fixed;
     z-index: 1;
@@ -359,7 +359,7 @@
     transform: translateX(-50%);
 }
 
-.close {
+.close, .closeCarpet {
     float: right;
     font-size: 29px;
     font-weight: bold;
@@ -369,6 +369,13 @@
 
 .close:hover,
 .close:focus {
+    color: #FF0000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.closeCarpet:hover,
+.closeCarpet:hover {
     color: #FF0000;
     text-decoration: none;
     cursor: pointer;
