@@ -75,7 +75,7 @@
     /* Centrar la ventana modal en relación a su propia altura y anchura */
     border: 2px solid #000;
     box-shadow: 5px 5px #000;
-    background-color: blue;
+    background-color: rgb(255, 255, 255);
     /* Color de fondo azul */
     resize: both;
     /* Permite al usuario redimensionar la ventana modal en ambas direcciones */
@@ -83,49 +83,53 @@
     /* Asegura que el contenido no se desborde */
 }
 
-// .modal-bodyTXT {
-//     width: 100%;
-//     height: calc(100% - 30px);
-//     border: none;
-//     color: black;
-//     font-family: heroSoft;
-//     white-space: pre-wrap;
-//     word-wrap: break-word;
-//     padding: 3px;
-//     margin-top: -2px;
-//     font-size: 3px;
-//     box-sizing: border-box;
-// }
+.close:hover, .close:focus {
+    color: #000000;
+    text-decoration: none;
+    box-shadow: inset -20px -19px 0px 284px #fff;
+    cursor: pointer;
+    margin-top: -2px;
+}
 
-// .modal-bodyTXT {
-//     width: 100%; /* Ancho del textarea */
-//     height: calc(100% - 30px); /* Altura del textarea, ajustada para la barra de título */
-//     border: none; /* Remover el borde del textarea */
-//     color: black;
-//     font-family: heroSoft;
-//     white-space: pre-wrap;
-//     word-wrap: break-word;
-//     padding: 10px; /* Espacio interior del textarea */
-//     box-sizing: border-box; /* Asegurar que el padding no aumente el tamaño del textarea */
-// }
-
+.closeCarpet:hover, .closeCarpet:focus {
+    color: #000000;
+    text-decoration: none;
+    box-shadow: inset -20px -19px 0px 284px #fff;
+    cursor: pointer;
+    margin-top: -2px;
+}
 
 .modal-title-barTXT {
     cursor: move;
+    user-select: none; /* Evita la selección del texto */
     /* padding: 10px; */
     padding-top: 38px;
-    background-color: #F3FC4D;
+    background-color: #ffffff;
     border-bottom: 2px solid black;
 }
 
+.modal-title-barCarpet {
+    cursor: move;
+    /* padding: 10px; */
+    padding-top: 38px;
+    background-color: #ffffff;
+    border-bottom: 2px solid black;
+}
 
 .modal-titleTXT {
+    color: white;
     font-family: dosFont;
     position: absolute;
+    top: 10px;
     left: 50%;
-    top: 5px;
+    margin-top: -10px;
+    padding-top: 2px;
+    padding-bottom: 7px;
+    padding-left: 8px;
+    padding-right: 4px;
     font-size: 30px;
     transform: translateX(-50%);
+    background-color: black;
 }
 
 
@@ -150,7 +154,7 @@
     width: -webkit-fill-available;
     height: -webkit-fill-available;
     border: none;
-    background-color: blue;
+    background-color: rgb(255, 255, 255);
     color: black;
     resize: none;
     font-family: dosFont;
@@ -158,61 +162,14 @@
     word-wrap: break-word;
     padding: 10px;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 28px;
 }
 
 
-// .modal-contentCarpet {
-//     display: flex; /* Usar flexbox para una mejor distribución de los elementos hijos */
-//     flex-direction: column; /* Organizar los elementos hijos en una columna */
-//     justify-content: space-between; /* Distribuir el espacio entre los elementos hijos */
-//     width: 800px; /* Ancho de la ventana modal */
-//     height: 600px; /* Altura de la ventana modal */
-//     position: absolute; /* Posición absoluta para permitir que se mueva */
-//     top: 50%; /* Centrar la ventana modal verticalmente */
-//     left: 50%; /* Centrar la ventana modal horizontalmente */
-//     transform: translate(-50%, -50%); /* Centrar la ventana modal en relación a su propia altura y anchura */
-//     border: 2px solid #000;
-//     box-shadow: 5px 5px #000;
-//     background-color: blue; /* Color de fondo azul */
-//     resize: both; /* Permite al usuario redimensionar la ventana modal en ambas direcciones */
-//     overflow: auto; /* Asegura que el contenido no se desborde */
-// }
-// .modal-title-barCarpet {
-//     cursor: move;
-//     padding: 10px;
-//     background-color: #F3FC4D;
-//     border-bottom: 2px solid black;
-// }
-
-// .modal-titleCarpet {
-//     font-family: dosFont;
-//     position: absolute;
-//     left: 50%;
-//     margin-top: 0px;
-//     font-size: 30px;
-//     transform: translateX(-50%);
-// }
-
-
-// .modal-bodyCarpet textarea {
-//     width: -webkit-fill-available;
-//     height: -webkit-fill-available;
-//     border: none;
-//     background-color: blue;
-//     color: black;
-//     resize: none;
-//     font-family: dosFont;
-//     white-space: pre-wrap;
-//     word-wrap: break-word;
-//     padding: 10px;
-//     box-sizing: border-box;
-//     font-size: 18px;
-// }
 .modal-bodyCarpet {
     position: absolute;
-    top: 2em;
-    left: 0.4em;
+    top: 1.4em;
+    left: 0.1em;
     border: none;
     color: black;
     font-family: dosFont;
@@ -226,13 +183,29 @@ textarea {
     scrollbar-color: #F3544D #ee8984;
 }
 
-
+.folder-content:hover {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-color: black;
+    margin-top: -2px;
+    margin-left: -3px;
+    padding-top: 2px;
+    padding-left: 3px;
+}
 
 .folder-content {
     /* Estilos específicos para los elementos generados dentro del modal */
     /* Por ejemplo: */
-    font-weight: bold;
-    color: rgb(0, 255, 4);
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+}
+
+.folder-content:hover {
+    /* Estilos específicos para los elementos generados dentro del modal */
+    /* Por ejemplo: */
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-color: black;
 }
 
 
@@ -279,34 +252,30 @@ textarea {
 }
 
 .modal-titleCarpet {
+    color: white;
     font-family: dosFont;
     position: absolute;
+    top: 10px;
     left: 50%;
-    top: 5px;
+    margin-top: -10px;
+    padding-top: 2px;
+    padding-bottom: 7px;
+    padding-left: 8px;
+    padding-right: 4px;
     font-size: 30px;
     transform: translateX(-50%);
+    background-color: black;
 }
 
-// .modal-title-barCarpet {
-//     cursor: move;
-//     padding-bottom: 5%;
-//     /* padding: 10px; */
-//     background-color: #F3FC4D;
-//     border-bottom: 2px solid black;
-// }
+#myModalCarpet {
+    user-select: none; /* Evita la selección del texto */
+}
 
 .modal-title-barCarpet {
     cursor: move;
     /* padding: 10px; */
     padding-top: 38px;
-    background-color: #F3FC4D;
+    background-color: #ffffff;
     border-bottom: 2px solid black;
 }
 
-// textarea::-webkit-scrollbar {
-//     width: 15px; /* Ancho deseado */
-// }
-
-// textarea::-webkit-scrollbar-thumb {
-//     background: #F3544D; /* Color del control deslizante de la barra de desplazamiento */
-// }
