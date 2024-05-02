@@ -23,12 +23,6 @@
                     "type": "",
                     "path": ""
                 },
-                "Web Developer Certificate.jpg": {
-                    "name": "Web Developer Certificate.jpg",
-                    "id": "",
-                    "type": "image",
-                    "path": "./folders/certificates/webDeveloperCertificate.jpg"
-                },
                 "varios": {
                     "name": "Varios",
                     "id": "",
@@ -44,23 +38,17 @@
             "id": "certificates",
             "type": "folder",
             "content": {
-                "img1": {
-                    "name": "Web Developer Certificate.jpg",
-                    "id": "webDeveloperCertificateImg",
+                "Web Developer Certificate.jpg": {
+                    "name": "Web Development Certificate.jpg",
+                    "id": "",
                     "type": "image",
-                    "path": "./folders/certificates/webDeveloperCertificate.jpg"
+                    "path": "./folders/certificates/webDevelopmentCertificate.png"
                 },
                 "img2": {
                     "name": "Javascript Certificate.jpg",
                     "id": "javascriptCertificate",
                     "type": "image",
                     "path": "./folders/certificates/webDeveloperCertificate.jpg"
-                },
-                "texttt": {
-                    "name": "Javascript Certificate.txt",
-                    "id": "tsxt",
-                    "type": "text_file",
-                    "path": "./textfiles/copia.txt"
                 }
             }
         },

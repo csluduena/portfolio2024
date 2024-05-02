@@ -216,6 +216,12 @@ body {
   /* 100% del viewport height */
 }
 
+.draggable {
+  position: absolute;
+  z-index: 1000; /* Asegúrate de que la carpeta se muestre encima de otras */
+  cursor: move;
+}
+
 .tableCfg {
   background-color: white;
   width: 100%;
