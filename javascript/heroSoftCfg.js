@@ -117,6 +117,11 @@ function openFolder(folder) {
         modal.style.display = "block";
     }
 
+
+        
+        
+        
+
     fetch('./system.json')
         .then(response => response.json())
         .then(data => {
@@ -209,6 +214,42 @@ function openFolder(folder) {
     window.addEventListener('mouseup', function() {
         isDragging = false;
     });
+
+    modalTitleBarTXT.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        dragOffset.x = e.clientX - modalContentTXT.offsetLeft;
+        dragOffset.y = e.clientY - modalContentTXT.offsetTop;
+    });
+
+    modalTitleBarCarpet.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        dragOffset.x = e.clientX - modalContentCarpet.offsetLeft;
+        dragOffset.y = e.clientY - modalContentCarpet.offsetTop;
+    });
+
+    window.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+            modalContentTXT.style.left = (e.clientX - dragOffset.x) + 'px';
+            modalContentTXT.style.top = (e.clientY - dragOffset.y) + 'px';
+            modalContentCarpet.style.left = (e.clientX - dragOffset.x) + 'px';
+            modalContentCarpet.style.top = (e.clientY - dragOffset.y) + 'px';
+        }
+    });
+
+    window.addEventListener('mouseup', function() {
+        isDragging = false;
+    });
+
+// Establecer el ancho y la altura máximos
+var minWidth = '750px';
+var minHeight = '375px';
+// Aplicar estilos de ancho y altura máximos
+modalTitleBarTXT.style.minWidth = minWidth;
+modalTitleBarTXT.style.minWidth = minHeight;
+modalContentTXT.style.minWidth = minWidth;
+modalContentTXT.style.minHeight = minHeight;
+modalContentCarpet.style.minWidth = minWidth;
+modalContentCarpet.style.minHeight = minHeight;
 
 });
 

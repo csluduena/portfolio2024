@@ -6,11 +6,11 @@
             "type": "text_file",
             "path": "./textfiles/aboutme.txt"
         },
-        "personal_resume.txt": {
+        "personalResume.txt": {
             "name": "Personal Resume.txt",
             "id": "personalResume",
             "type": "text_file",
-            "path": "./textfiles/personal_resume.txt"
+            "path": "./textfiles/personalResume.txt"
         },
         "portfolio": {
             "name": "Portfolio",
@@ -58,11 +58,11 @@
             "type": "api",
             "content": ""
         },
-        "personal_resume2.txt": {
+        "personalResume2.txt": {
             "name": "Personal Resume.txt",
             "id": "personalResume",
             "type": "text_file",
-            "path": "./textfiles/personal_resume.txt"
+            "path": "./textfiles/personalResume.txt"
         }
     }
 }
