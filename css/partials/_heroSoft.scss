@@ -328,9 +328,16 @@ tr:nth-child(2) td:nth-child(n+13):nth-child(-n+24) {
 }
 
 .num1Smenu {
-    margin-left: 10px;
+    margin-left: 14px;
 }
 
+.num2Smenu {
+    margin-left: 7px;
+}
+
+.num3Smenu {
+    margin-left: 7px;
+}
 
 .subMenuContent:hover {
     background-color: #5154E6;
@@ -443,3 +450,57 @@ tr:nth-child(2) td:nth-child(n+13):nth-child(-n+24) {
 .modal-body {
     padding: 20px;
 }
+
+
+//! MENU BAR
+/* CSS */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 88%;
+    display: none;
+    position: absolute;
+    width: 138px;
+    background-color: #F3FC4D;
+    border: 2px solid #000000;
+    z-index: 1;
+    list-style-type: none;
+    padding: 0;
+    margin-left: 5.4px;
+    font-size: 25px;
+}
+
+.dropdown-menu {
+    display: none;
+    /* resto del código CSS */
+    transition: all 0.3s ease; /* esto hace que el menú se abra y cierre suavemente */
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.blocked {
+    pointer-events: none; /* esto hace que el elemento no sea "clickeable" */
+    color: #999999; /* esto cambia el color del texto a gris claro, puedes ajustarlo a lo que prefieras */
+}
+
+.blocked:hover {
+    background-color: transparent; /* esto evita que el fondo cambie de color al pasar el mouse sobre el elemento */
+}
+
+.listStyle:hover {
+    background-color: #5154E6;
+}
+
+.blocked hr {
+    border: none;
+    border-top: 2px solid #000000; /* esto crea una línea horizontal */
+    width: 100%; /* esto hace que la línea ocupe todo el ancho del elemento */
+}
+
+//TODO IE Modal CFG
+

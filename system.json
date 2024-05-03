@@ -14,21 +14,40 @@
         },
         "portfolio": {
             "name": "Portfolio",
-            "id": "portfolioFolder",
             "type": "folder",
             "content": {
-                "...": {
-                    "name": "",
-                    "id": "",
-                    "type": "",
-                    "path": ""
-                },
-                "varios": {
-                    "name": "Varios",
-                    "id": "",
+                "1Project": {
+                    "name": "[Web Project 1]",
                     "type": "folder",
                     "content": {
-                        
+                        "Project1": {
+                            "name": "README.txt",
+                            "type": "text_file",
+                            "path": "./textfiles/legendsBuildersReadme.txt"
+                        },
+                        "Link1": {
+                            "name": "Visit: Legends Builder",
+                            "info": "Github Repository here: https://github.com/csluduena/CoderHouse-DesarrolloFullStack-Javascript-Trabajo3",
+                            "type": "html",
+                            "path": "https://csluduena.github.io/CoderHouse-DesarrolloFullStack-Javascript-Trabajo3/"
+                        }
+                    }
+                },
+                "2Project": {
+                    "name": "[Web Project 2]",
+                    "type": "folder",
+                    "content": {
+                        "Project2": {
+                            "name": "README.txt",
+                            "type": "text_file",
+                            "path": "./textfiles/dmReadme.txt"
+                        },
+                        "Link2": {
+                            "name": "Visit: Dunder Mifflin WebStyle",
+                            "info": "Github Repository here: https://github.com/csluduena/Dunder-Mifflin-webStyle",
+                            "type": "html",
+                            "path": "https://csluduena.github.io/Dunder-Mifflin-webStyle/"
+                        }
                     }
                 }
             }
