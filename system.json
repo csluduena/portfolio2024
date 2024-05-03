@@ -42,13 +42,13 @@
                     "name": "Web Development Certificate.jpg",
                     "id": "",
                     "type": "image",
-                    "path": "./folders/certificates/webDeveloperCertificate.png"
+                    "path": "./folders/certificates/webDevelopmentCertificate.jpg"
                 },
                 "img2": {
                     "name": "Javascript Certificate.jpg",
                     "id": "javascriptCertificate",
                     "type": "image",
-                    "path": "./folders/certificates/webDeveloperCertificate.jpg"
+                    "path": "./folders/certificates/webDevelopmentCertificate.jpg"
                 }
             }
         },
